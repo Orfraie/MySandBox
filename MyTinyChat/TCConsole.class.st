@@ -1,3 +1,6 @@
+"
+Exeos sur new/init
+"
 Class {
 	#name : #TCConsole,
 	#superclass : #SpPresenter,
