@@ -7,5 +7,5 @@ Class {
 { #category : #example }
 IcebergTest class >> icebergTestReportOnTranscript [
 	" In a Transcript, IcebergTest icebergTestReportOnTranscript. "
-	Transcript cr; show: '!!! ' ; show: 'Coming from Icebergtest class Method to write event onTranscript.' ; cr .
+	Transcript cr; show: '!!!! ' ; show: 'Coming from Icebergtest class Method to write event onTranscript.' ; cr .
 ]
