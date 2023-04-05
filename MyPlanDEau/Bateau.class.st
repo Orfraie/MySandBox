@@ -28,7 +28,7 @@ Bateau class >> caps [
 
 { #category : #creation }
 Bateau class >> dicoBoat [
-
+	"a comment"
 	^dicoBoat
 ]
 
