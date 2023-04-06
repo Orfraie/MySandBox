@@ -5,16 +5,62 @@ Class {
 }
 
 { #category : #tests }
+BateauTest >> testBateauComplet [
+" test complet du voilier"
+| vo r1 r2 r3 r4 r5 r6 r7 r0 r8 r9|
+
+vo := Voilier new: 'vo'.
+r0 := (vo isKindOf: Bateau).
+vo changeVoilePosition.
+
+r1 := vo voile.
+vo x: 1.
+vo y: 1.
+r2 := vo x.
+r3 := vo y.
+
+r4 := vo maxx.
+r5 := vo maxy.
+
+vo x: 23.
+vo y: 24.
+r6 := vo x.
+r7 := vo y.
+
+vo dir: 'nord'.
+vo move.
+r8 := vo x.
+r9 := vo y.
+
+
+Transcript show: 'Is a kind of boat ?', r0 printString ; cr.
+Transcript show: 'Is sail up or down ?', r1 printString ; cr.
+Transcript show: 'Position x=', r2 , '  y=' , r3 printString ; cr.
+Transcript show: 'Plan d''eau size Maxx=', r4,', Maxy=', r5 printString ; cr.
+
+Transcript show: 'Position x must be 23 and is ', r6 printString ; cr.
+Transcript show: 'Position y must be 24 and is ', r7 printString ; cr.
+Transcript show: 'Plan d''eau size Maxx=', r4,', Maxy=', r5 printString ; cr.
+Transcript show: 'Position x must be 23 and is ', r6 printString ; cr.
+Transcript show: 'Position y must be 23 and is ', r7 printString ; cr.
+
+self assert: ( r0 and: [ r1 and: [ 1 = r2 and: [ 1 = r3]]]) equals: true
+]
+
+{ #category : #tests }
 BateauTest >> testBuildThreeBateaux [
  	"Creation de 3 bateaux 1/ évaluation de la taille de dicoBoat 2/Extraction des variables d'instance"
 	| ba1 ba2 ba3 |
 	Bateau initClassVariable .
-	ba1 := Bateau new  name: 'ba1'; randomizedXYCAP .
-	ba2 := Bateau new  name: 'ba2'; x: 10 ; y:10 .
-	ba3 := Bateau new  name: 'ba3'.
+	ba1 := Bateau name: 'ba1' .
+	ba1 randomizedXYCAP .
+	ba2 := Bateau name: 'ba2'.
+	ba2 x: 10.
+	ba2 y: 10.
+	ba3 := Bateau name: 'ba3'.
 	Transcript show: ( Bateau dicoBoatSize ) ; cr.
 	self assert: ( Bateau dicoBoatSize ) equals: 3.
-	" self assert: ( ba2 isMemberOf: Bateau) equals: true  "
+	self assert: ( ba2 isMemberOf: Bateau ) equals: true
 ]
 
 { #category : #tests }
@@ -55,26 +101,42 @@ BateauTest >> testBuildWithANamexyWithLimit [
 ]
 
 { #category : #tests }
-BateauTest >> testInitialize [
-	"Commentaire de testLePlusSimple 5"
-	| ba |
-	ba := Bateau new.
-	ba name: 'aName' ; x: 1 ; y: 1.
-	self assert: ( ba isMemberOf: Bateau) equals: true.
-	self assert: ( ba name ) equals: 'aName'.
-	self assert: ( Bateau maxNberOfBoat ) equals: 50.
-	self assert: ( ba x = 1 ) equals: true.
-	self assert: ( ba y = 1 ) equals: true.
-	self assert: ( Bateau dicoBoatSize )  equals: 1.
-	self assert: ( ( Bateau caps size = 8 ) and: [  (Bateau caps at: 2) = 45 ] )
+BateauTest >> testCreation [
+	" "
+	| b v c d |
+	b := Voilier new.
+	c := Bateau cnt.
+	d := Bateau dico.
+	self assert: 
+			( c = 1 
+			and: [ ( d isMemberOf:  Dictionary ) 
+			and: [ ( b isKindOf: Bateau ) 
+			and: (b isMemberOf: Voilier) ] ] ) 
+	equals: true
+]
+
+{ #category : #tests }
+BateauTest >> testInitialize [ 
+	" "
+	| b c d |
+	Bateau initialize.
+	b := Voilier new.
+	c := Bateau cnt.
+	d := Bateau dico.
+	self assert: 
+			( c = 1 
+			and: [ (d isMemberOf:  Dictionary ) 
+			and: [ ( b isKindOf: Bateau ) 
+			and: (b isMemberOf: Voilier) ] ] ) 
+	equals: true
 ]
 
 { #category : #tests }
 BateauTest >> testLePlusSimple [
-"kjolloilhkjh"
+	" "
 	| ba |
 	ba := Bateau new.
-	self assert: ( ba isMemberOf: Bateau) equals: true
+	self assert: ( ba isMemberOf:  Bateau ) equals: true
 ]
 
 { #category : #tests }

@@ -5,18 +5,9 @@ This is class Bateau documentation
 Class {
 	#name : #Bateau,
 	#superclass : #Object,
-	#instVars : [
-		'name',
-		'x',
-		'y',
-		'cap'
-	],
 	#classVars : [
-		'caps',
-		'dicoBoat',
-		'max',
-		'maxNberOfBoat',
-		'min'
+		'cnt',
+		'dico'
 	],
 	#category : #MyPlanDEau
 }
@@ -24,6 +15,16 @@ Class {
 { #category : #creation }
 Bateau class >> caps [
 	^caps
+]
+
+{ #category : #initialization }
+Bateau class >> cnt [
+	^1.
+]
+
+{ #category : #data }
+Bateau class >> dico [
+ 	^Dictionary new.
 ]
 
 { #category : #creation }
@@ -69,10 +70,13 @@ Bateau class >> min [
 { #category : #creation }
 Bateau class >> name: aName [
 | ba |
-	ba := self new.
+	ba := self new name: aName.
 	"  verifier que aName n'est pas deja present dans dicoBoat "
+	
 	"  creer une entrée dans dicoBoat "
-	ba name: aName  
+	dicoBoat at: aName put: ba.
+	^ba
+	 
 ]
 
 { #category : #accessing }
