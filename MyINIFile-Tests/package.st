@@ -1,0 +1,1 @@
+Package { #name : #'MyINIFile-Tests' }
