@@ -4,18 +4,18 @@ Class {
 	#category : #'MyINIFile-Tests'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #tests }
 INIFileTest >> testBatchAddition [
 	| ini dict |
 	ini := INIFile new.
 	dict := Dictionary withAll: {'key1'->'val1'. 'key2'->'val2'}.
 	(ini section: 'foo') addAll: dict.
 	
-	self assert: ((ini section: 'foo') at: 'key1') = 'val1'.
-	self assert: ((ini section: 'foo') at: 'key2') = 'val2'.
+	self assert: ((ini section: 'foo') at: 'key1') equals:  'val1'.
+	self assert: ((ini section: 'foo') at: 'key2') equals:  'val2'.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #tests }
 INIFileTest >> testComplexRead [
 	| content in |
 	content := '
@@ -36,13 +36,13 @@ key2= val with a space in it
 '.
 
 	in := INIFile readFrom: content readStream.
-	self assert: ((in section: 'foo') at: 'key1') = 'val1'.
-	self assert: ((in section: 'foo') at: 'key2') = 'val with a space in it'.
-	self assert: ((in section: 'bar') at: 'key1') = 'val1'.
-	self assert: ((in section: 'bar') at: 'key2') = 'val2'.
+	self assert: ((in section: 'foo') at: 'key1') equals: 'val1'.
+	self assert: ((in section: 'foo') at: 'key2') equals: 'val with a space in it'.
+	self assert: ((in section: 'bar') at: 'key1') equals: 'val1'.
+	self assert: ((in section: 'bar') at: 'key2') equals: 'val2'.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #tests }
 INIFileTest >> testEmptyValueOnRead [
 	| content in |
 	content := '[foo]
@@ -52,7 +52,7 @@ key1 =      '.
 	self assert: ((in section: 'foo') at: 'key1') isNil
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #tests }
 INIFileTest >> testHasSection [
 	| ini section |
 	ini := INIFile new.
@@ -63,7 +63,7 @@ INIFileTest >> testHasSection [
 	
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #tests }
 INIFileTest >> testIteration [
 	| ini |
 	ini := INIFile new.
@@ -72,11 +72,11 @@ INIFileTest >> testIteration [
 	(ini section: 'bar') at: 'key1' put: 'val1'.
 	(ini section: 'bar') at: 'key2' put: 'val2'.
 	
-	self assert: ini sections size = 2.
-	ini sectionsDo: [:ea | self assert: ea associations size = 2].
+	self assert: ini sections size equals: 2.
+	ini sectionsDo: [:ea | self assert: ea associations size equals: 2].
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #tests }
 INIFileTest >> testMultipleSections [
 	| stream out in |
 	out := INIFile new.
@@ -88,13 +88,13 @@ INIFileTest >> testMultipleSections [
 	out writeOn: stream.
 	
 	in := INIFile readFrom: stream contents readStream.
-	self assert: ((in section: 'foo') at: 'key1') = 'val1'.
-	self assert: ((in section: 'foo') at: 'key2') = 'val2'.
-	self assert: ((in section: 'bar') at: 'key1') = 'val1'.
-	self assert: ((in section: 'bar') at: 'key2') = 'val2'.
+	self assert: ((in section: 'foo') at: 'key1') equals: 'val1'.
+	self assert: ((in section: 'foo') at: 'key2') equals: 'val2'.
+	self assert: ((in section: 'bar') at: 'key1') equals: 'val1'.
+	self assert: ((in section: 'bar') at: 'key2') equals: 'val2'.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #tests }
 INIFileTest >> testNilValueOnWrite [
 	| out expected stream |
 	out := INIFile new.
@@ -111,7 +111,7 @@ key1=
 	
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #tests }
 INIFileTest >> testSectionIsEmpty [
 	| ini section |
 	ini := INIFile new.
@@ -122,7 +122,7 @@ INIFileTest >> testSectionIsEmpty [
 	
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #tests }
 INIFileTest >> testSingleSection [
 	| out stream in foo |
 	out := INIFile new.
@@ -132,6 +132,6 @@ INIFileTest >> testSingleSection [
 	out writeOn: stream.
 	
 	foo := (INIFile readFrom: stream contents readStream) section: 'foo'.
-	self assert: (foo at: 'key1') = 'val1'.
-	self assert: (foo at: 'key2') = 'val2'.
+	self assert: (foo at: 'key1') equals: 'val1'.
+	self assert: (foo at: 'key2') equals: 'val2'.
 ]
