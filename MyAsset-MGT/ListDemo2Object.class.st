@@ -22,7 +22,7 @@ ListDemo2Object >> collection [
 
 { #category : #accessing }
 ListDemo2Object >> collection: aCollection [
-	
+	" add a collection and says to list to self update"
 	collection := aCollection.
 	
 	^ self changed: #list.
