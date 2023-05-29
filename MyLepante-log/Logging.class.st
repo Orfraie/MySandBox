@@ -16,8 +16,7 @@ Class {
 		'stripCtl',
 		'initDone',
 		'udpAddr',
-		'aLogPane',
-		'textPaneName'
+		'aLogMorph'
 	],
 	#classVars : [
 		'DefaultDebug',
@@ -32,7 +31,7 @@ Class {
 		'DefaultUdpPort',
 		'Lf'
 	],
-	#category : #MyLogVersions
+	#category : #'MyLepante-log'
 }
 
 { #category : #viewer }
@@ -65,20 +64,26 @@ Logging class >> dumpLoggingClassVariablesForLog [
 Logging class >> initClassVariables [
 	"retourne une nouvelle instance du logging avec les valeurs par
 	default"
-	DefaultUdpFlag := true.
+	DefaultUdpFlag := false.
 	DefaultUdpFacility := 183.
 	"Code de la facility local7.debug : 191"
 	"Code de la facility local6.debug : 183"
-	"191-183 =8, devinez comment faire aller le message dans local5.debug ??"
+	"191-183 =8, devinez comment faire aller le message dans
+	local5.debug ??"
 	DefaultUdpNode := 'localhost'.
-	DefaultUdpPort := 5463. "Pour tourner avec Bpif-v2-srv.py sinon 514 pour syslog"
+	DefaultUdpPort := 514.
 	
-	DefaultLogFlag := true.	
+	DefaultLogFlag := false.	
 	DefaultLogRoot := 'LL-'.
 
 	DefaultDebugFlag := true.
-	DefaultTranscriptFlag := true.
-
+	DefaultTranscriptFlag := false.
+	" decommisionne le 12 janvier 2010
+	DefaultSmtpFlag := false.
+	DefaultSmtpNode := 'localhost'.
+	DefaultSmtpAddress := 'dagerm@localhost'.
+	DefaultSmtpPort := 25.
+	"
 	Lf := 10 asCharacter asString.
 	DefaultStripCtlFlag := true
 ]
@@ -86,7 +91,7 @@ Logging class >> initClassVariables [
 { #category : #documentation }
 Logging class >> notesSurLaClasse [
 	"
-Cette classe permet d'installer directement , un m‚Äö√†√∂¬¨¬©canisme de logging apte a surveiller le fonctionnement d'une petite application.
+Cette classe permet d'installer directement , un m‚àö¬©canisme de logging apte a surveiller le fonctionnement d'une petite application.
 Il permet, en fonction des flags positionnes a true ou false de gerer un fichier log local, un fichier syslog distant ou local, un fichier 
 circulaire memeoire, le transcript et un textMorph qui peut etre une sous fenetre d'une interface applicative ou une fenetre standAlone.
 Logging
@@ -108,7 +113,7 @@ Logging
 	local7.*			-/var/log/local7.log
 	Pour regarder passer les paquest UDP
 	==> tcpdump -Nqt -i lo '(port 514)'
-	Pour g‚Äö√†√∂¬¨¬©n‚Äö√†√∂¬¨¬©rer des enregistremenst de logs pour tester si c'est le
+	Pour g‚àö¬©n‚àö¬©rer des enregistremenst de logs pour tester si c'est le
 	code Pharo qui bugge ou si c'est la configuration du systeme Unix
 	hebergeant le daemon rsyslogd
 	==> logger -s -d -t TAG -i -p 
@@ -125,14 +130,54 @@ Logging
 Logging class >> openExample [
 	"
 	Une petite application qui ne fait rien d'utile mais qui logge
-	plein de trucs est disponible dans la meme categorie dans la classe
+	plein de trucs est disponible dans la meme cat‚àö¬©gorie dans la classe
 	LoggingExample,..... Elle permet de voir pratiquement comment
 	configurer un textMorph
 	de logging dans l'interface d'une application normale
-	Pour la lancer , evaluer [ LoggingExample openView ]
+	Pour la lancer , ‚àö¬©valuer [ LoggingExample openView ]
 	
 	"
 	^ self
+]
+
+{ #category : #OverallTests }
+Logging class >> openLogWithoutGUIExemple [
+	| aLog |
+	Logging initClassVariables.
+	Logging dumpLoggingClassVariables.
+	Transcript show: ( Logging dumpLoggingClassVariables).
+	aLog := Logging new.
+	aLog init: nil.
+	aLog dumpFlag. 
+	1 to: 5 do: [ :i | aLog logit: 'azer' msg: 'rty',i asString, 7 asCharacter
+	asString, 10 asCharacter asString, 78 asCharacter asString, 130
+	asCharacter asString].
+	aLog closeAllSupport.
+]
+
+{ #category : #OverallTests }
+Logging class >> openSyslogExample [
+	"
+	=======================================
+	le script ci dessous est un test pour verifier la configuration de
+	rsyslogd, ca balance dasn /var/log/message
+	"
+	| socket buffer n serverName serverAddr |
+	Transcript show: 'initializing network ... '.
+	Socket initializeNetwork.
+	Transcript show: 'ok';
+		 cr.
+	serverName := 'localhost'.
+	serverAddr := NetNameResolver addressForName: serverName timeout: 10.
+	socket := Socket newUDP.
+	Transcript show: 'Server endpoint created throught the syslogd server';
+		 cr.
+	socket
+		sendData: '<191>TAG toto'
+		toHost: serverAddr
+		port: 514.
+	Transcript show: 'On vient d''ecrire dans dans la facilit‚àö¬© local7.debug (code191)' ; cr. socket closeAndDestroy.
+	Transcript cr; show: 'server endpoint destroyed'; cr
 ]
 
 { #category : #OverallTests }
@@ -208,8 +253,7 @@ Logging >> closeAllSupport [
 	logFileDesc close.
 	self initDone: false.
 	udpSocket closeAndDestroy.
-	"aLogPane dependents first close  . fonctionne tres bien mais on ne voit plus rien,..."
-	Transcript cr; show: 'Client endpoint destroyed, log file closed, pane closed '; cr.
+	Transcript cr; show: 'server endpoint destroyed'; cr.
 ]
 
 { #category : #configuring }
@@ -225,28 +269,19 @@ Logging >> dump [
        self inspect.
 ]
 
-{ #category : #'accessing - view' }
+{ #category : #viewer }
 Logging >> dumpFlag [
 	"print current flag of this instance"
-	| s |
+	| temporary s variable names |
 	s := String new.
-	s := 'udpFlag is ' , udpFlag printString , ',   ' , 'logFlag is ' , logFlag printString , '   ' , '   ' , 'debugFlag = ' , debugFlag printString, ',   ' , 'transcriptFlag = ' , transcriptFlag printString, '   ' , 'textPaneName = ' , textPaneName printString.
+	s := 'udpFlag is ' , udpFlag printString , ',   ' , 'logFlag is ' , logFlag printString , '   ' , 'smtpFlag is ' , smtpFlag printString,'   ' , 'debugFlag = ' , debugFlag printString, ',   ' , 'transcriptFlag = ' , transcriptFlag printString, '   ' , 'textMorphName = ' , textMorphName printString.
 	^ s
 ]
 
-{ #category : #'accessing - view' }
+{ #category : #viewer }
 Logging >> dumpInstanceVariable [
 	"print current parameter of this instance"
-	| |
-	Transcript 
-		nextPutAll: 'facility = ' ; nextPutAll: udpFacility printString; cr ; 
-		nextPutAll: 'fileName = ' ; nextPutAll: logFileName ; cr ;
-		nextPutAll: 'port = ' ; nextPutAll: udpPort printString ; cr ;
-		nextPutAll: 'node = ' ; nextPutAll: udpNode  ;cr ;
-		nextPutAll: 'debug = ' ; nextPutAll: debugFlag printString ;cr ;
-		nextPutAll: 'wsName = ' ; nextPutAll: 'g' printString  ;cr ;
-		nextPutAll: 'textPaneName = ' ; nextPutAll: textPaneName printString  ;cr .
-	
+	| temporary variable names |
 	Transcript show: 'facility = ' , udpFacility printString;
 		 cr;
 		 show: 'fileName = ' , logFileName;
@@ -259,7 +294,7 @@ Logging >> dumpInstanceVariable [
 		 cr;
 		 show: 'wsName = ' , 'g' printString;
 		 cr;
-		 show: 'textPaneName = ' , textPaneName  printString;
+		 show: 'textMorphName = ' , textMorphName printString;
 		 cr
 ]
 
@@ -272,9 +307,14 @@ Logging >> facility [
 Logging >> init [
 	"initialize une instance du logging avec les valeurs par default
 	Prise en compte d'un eventuel textMorph si disponible"
-	aLogPane 
-	ifNil: [
-		aLogPane := Workspace openContents: Time now printString,  ' Démarrage du logging.', Character cr asString .
+	( aLogMorph isNil )
+	ifTrue: [
+		aLogMorph := RubPluggableTextMorph new.
+				"on: self 
+				text: #text 
+				accept: nil
+				readSelection: nil 
+				menu: nil."
 		].
 	
 	self udpFacility: DefaultUdpFacility.
@@ -291,17 +331,16 @@ Logging >> init [
 ]
 
 { #category : #'initialize-release' }
-Logging >> init: aExistingTextPaneName [ 
+Logging >> init: aExistingTextMorphName [ 
 	"initialize une instance du logging avec les valeurs par default
 	Prise en compte d'un eventuel textMorph si disponible"
-	aLogPane 
-	ifNil: [
-		aLogPane := Workspace openContents: Time now printString,  ' Démarrage du logging.', Character cr asString .
-		aLogPane label: 'Logging de l''application MyPlan'.
+	( aLogMorph isNil )
+	ifTrue: [
+		aLogMorph := PluggableTextMorph on: self text: #text accept: nil.
 		].
 	
-	aExistingTextPaneName class isNil
-		ifFalse: [self textPaneName:  aExistingTextPaneName ].
+	aExistingTextMorphName class isNil
+		ifFalse: [self textMorphName: aExistingTextMorphName].
 	self udpFacility: DefaultUdpFacility.
 	self udpNode: DefaultUdpNode.
 	self udpPort: DefaultUdpPort.
@@ -351,17 +390,22 @@ Logging >> logRoot: f [
 
 { #category : #'method execution' }
 Logging >> logit: code msg: aMsg [ 
-	"ca formate aMsg pour le support de l'ascii 7 bits sans ; et sans CtrlChar"
-	| s ss input output char |
-	" On remplace les ;  par des , "
-	(aMsg	select: [:i | i = $;]) isNotEmpty  
-		ifTrue: [self error: 'no ; inside aMsg, thanks'].
+	"ca formate aMsg pour le support de l'ascii 7 bits (ou non) avec la
+	compatibilit‚àö¬© CSV et la compatibilit‚àö¬© Syslogd Facility et le support du
+	code de la methode appelante"
+	"aMsg ne peut pas contenir de ;"
+	| s ss t input output char |
+	(aMsg
+			select: [:i | i = $;]) size = 0
+		ifFalse: [self error: 'no ; inside aMsg, thanks'].
 	"ca doit etre des strings,...."
-	(code isString and: [code size < 25])
+	(code isString
+			and: [code size < 25])
 		ifFalse: [self error: 'unsupported class/size for code in logit'].
 	aMsg isString
-		ifFalse: [self error: 'unsupported object for aMsg']
-	"on vire les caracteres"
+		ifFalse: [self error: 'unsupported object for aMsg'].
+	"on vire les caract‚àö¬Æres de contr‚àö¬•le si c'est demand‚àö¬© par la config,.."
+	self stripCtl
 		ifTrue: [input := ReadStream on: aMsg.
 			output := String new.
 			[input atEnd]
@@ -370,15 +414,12 @@ Logging >> logit: code msg: aMsg [
 						ifTrue: [output := output , '<CR>']
 						ifFalse: [char = 10 asCharacter
 								ifTrue: [output := output , '<LF>']
-								ifFalse: [ char = $; 
-									ifTrue: [  output := output, ' ' ]
-									ifFalse: [(char < 32 asCharacter or: [char > 129 asCharacter])
-											ifTrue: [output := output , '<?>']
-											ifFalse: [output := output , char asString]]]]]].
+								ifFalse: [(char < 32 asCharacter
+											or: [char > 129 asCharacter])
+										ifTrue: [output := output , '<?>']
+										ifFalse: [output := output , char asString]]]]].
 	"On formate,..."
-	s := '<' , self facility asString , '>;' , 
-	Date today yyyymmdd , ';' , Time now print24 , ';' , 
-	code , ';' , output , Lf.
+	s := '<' , self facility asString , '>;' , Date today yyyymmdd , ';' , Time now print24 , ';' , code , ';' , output , Lf.
 	ss := Time now print24 , '  [' , code , ']  ' , output , Lf.
 	self outputLoggingString: s or: ss
 ]
@@ -391,11 +432,11 @@ Logging >> openAllSupport [
 	maniere identique"
 	"Debug : idem, car ca utilise tous les autres supports disponibles"
 	"Syslog: sauf ordre de config, on fait marcher, si syslogd est inactif ,
-	pas d'importance, on est en mode deconnect‚Äö√†√∂¬¨¬©"
+	pas d'importance, on est en mode deconnect‚àö¬©"
 	self udpFlag
 		ifTrue: [self openSyslog].
 	"Memory: a toujours faire marcher, pas de configuration a faire, ici le
-	code d'initialisation du fichier memoire circulaire reference dans le
+	code d'initialisation du fichier memoire circulaire reference dans	le
 	Systeme Dictionnary Smalltalk"
 	self openMemory.
 	"Logfile: si la config l'impose on fait marcher"
@@ -406,13 +447,12 @@ Logging >> openAllSupport [
 
 { #category : #openFileSocket }
 Logging >> openLog [
-	"on cree le fichier log"
-
+	"on cree le fichier log
+	self halt."
 	logFileName := logRoot , 'yy'.
-	logFileDesc := logFileName asFileReference writeStream.
+	logFileDesc := FileStream fileNamed: logFileName.
 	logFileDesc setToEnd.
-	logFileDesc nextPutAll: 'Log file initialized,  date is ' , Date today printString , ', time is ' , Time now printString , Lf.
-	"self halt."
+	logFileDesc nextPutAll: 'Log file initialized,  date is ' , Date today printString , ', time is ' , Time now printString , Lf
 ]
 
 { #category : #openFileSocket }
@@ -433,15 +473,13 @@ Logging >> openSyslog [
 
 { #category : #'method execution' }
 Logging >> outputLoggingString: aString [ 
-	"dispatche vers tous les supports de logging configures"
-	| crlf1 |
+	"dispatche vers tous les supports de logging configur‚àö¬©s"
+	| temporary variable names crlf1 |
 	crlf1 := 10 asCharacter asString , 13 asCharacter asString.
-	aLogPane 
-		ifNotNil: [aLogPane appendText: aString.. aLogPane contents: aLogPane contents].
-	
+	aLogMorph isNil
+		ifFalse: [aLogMorph appendText: aString.].
 	logFlag
 		ifTrue: [logFileDesc nextPutAll: aString].
-	
 	transcriptFlag
 		ifTrue: [Transcript show: aString].
 	udpFlag
@@ -453,11 +491,11 @@ Logging >> outputLoggingString: aString [
 
 { #category : #'method execution' }
 Logging >> outputLoggingString: aString or: aScreenString [
-	"dispatche vers tous les supports de logging configurés"
-	| crlf1 |
+	"dispatche vers tous les supports de logging configur‚àö¬©s"
+	| temporary variable names crlf1 |
 	crlf1 := 10 asCharacter asString , 13 asCharacter asString.
-	aLogPane 
-		ifNotNil: [aLogPane contents append: aScreenString . aLogPane contents: aLogPane contents].
+	aLogMorph isNil
+		ifFalse: [aLogMorph appendText: aScreenString].
 	logFlag
 		ifTrue: [logFileDesc nextPutAll: aString].
 	transcriptFlag
