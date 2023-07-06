@@ -5,6 +5,13 @@ Class {
 }
 
 { #category : #tests }
+TinyChatTest >> CreationInstanceSansTestDansLeLibelle [
+	" ? "
+	self assert: TinyChat new initialize messages size equals: 0
+
+]
+
+{ #category : #tests }
 TinyChatTest >> testCreationInstance [
 	"comment stating purpose of instance-side message"
 	"scope: class-variables  &  instance-variables"	

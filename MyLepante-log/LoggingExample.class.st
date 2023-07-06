@@ -228,9 +228,9 @@ LoggingExample >> openViewWithSpec2 [
 	aLog init.
 	"End of init Logging,..."
 	
-	"Pour debugger seulement ,..."
+	"Pour debugger seulement et avoir a qquechose a lister,..."
 	d := Dictionary  new.
-	$a to: $z do: [ :aChar | d at: aChar put: aChar ].
+	( $a to: $z ) do: [ :aChar | d at: aChar put: 'Value is ', aChar asUppercase asString ].
 	l := d keys. "asSortedCollection."
 	
 	"On initialize les panes,..."
@@ -241,13 +241,13 @@ LoggingExample >> openViewWithSpec2 [
 	textPresenter := presenter newText.
 	
 	"On les arrange dans le presenter,..."
-	presenter layout: (SpBoxLayout newLeftToRight 
+	presenter layout: (SpBoxLayout newTopToBottom   " ou newLeftToRight pour presenter cote a cote"
 		add: listPresenter ;
 		add: textPresenter ;
 		yourself).
 		
 	"On dit quoi faire a listPresenter quand on clique sur un item dans la liste,..."
-	listPresenter transmitTo: textPresenter transform: [ :e | e asString ].
+	listPresenter transmitTo: textPresenter transform: [ :aKey | ( d at: aKey ) asString ].
 	
 	"On ouvre le tout dans le vaste monde,..."
 	presenter open.
