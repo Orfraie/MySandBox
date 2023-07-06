@@ -12,6 +12,6 @@ IcebergTest class >> testIcebergReportOnTranscript [
 
 { #category : #tests }
 IcebergTest >> testIt [ 
-	" Test du test , si , si "
+	" Test du test , si , si  "
 	Transcript show: 'Je suis dans le test du Test de icebergTest' ; cr .
 ]
