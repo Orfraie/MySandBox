@@ -21,9 +21,9 @@ Betes class >> isAbstract [
 
 { #category : #setting }
 Betes class >> new [
-	""
-	self == self class ifTrue: [
-		^ self error: 'Betes is an abstract class.  Make a concrete subclass.'].
+	"On ne cree pas de betes, ca n''existe pas. le super new est indispensable si on a 
+	des subclasses qui , elles, sont instanciables "
+	self == Betes ifTrue: [ ^ self subclassResponsibility ].
 	^ super new
 ]
 
