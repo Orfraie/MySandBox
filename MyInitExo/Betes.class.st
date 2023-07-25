@@ -1,6 +1,9 @@
 Class {
 	#name : #Betes,
 	#superclass : #Object,
+	#instVars : [
+		'name'
+	],
 	#classVars : [
 		'count'
 	],
