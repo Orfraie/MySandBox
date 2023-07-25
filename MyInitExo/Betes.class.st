@@ -2,7 +2,8 @@ Class {
 	#name : #Betes,
 	#superclass : #Object,
 	#instVars : [
-		'name'
+		'name',
+		'vivant'
 	],
 	#classVars : [
 		'count'
