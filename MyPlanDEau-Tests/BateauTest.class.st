@@ -7,7 +7,7 @@ Class {
 { #category : #tests }
 BateauTest >> testBateauComplet [
 " test complet du voilier"
-| vo r1 r2 r3 r4 r5 r6 r7 r0 r8 r9|
+| vo r1 r2 r3 r4 r5 r6 r7 r0 r8 r9 r10|
 
 vo := Voilier new: 'vo'.
 r0 := (vo isKindOf: Bateau).
