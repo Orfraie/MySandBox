@@ -9,6 +9,10 @@ Class {
 		'cnt',
 		'dico'
 	],
+	#classInstVars : [
+		'initDone',
+		'dicoBoat'
+	],
 	#category : #MyPlanDEau
 }
 
@@ -41,14 +45,11 @@ Bateau class >> dicoBoatSize [
 
 { #category : #creation }
 Bateau class >> initClassVariable [
-	" Be sure max min maxNberOfBoat dicoBoat and caps are crrectly setup when instance are created "
-	max := 25 . 
-	min := 1.
-	maxNberOfBoat := 50.
+	" Be sure max min maxNberOfBoat dicoBoat and caps are correctly setup when instance are created "
+	initDone ifNotNil: [ self logIt: 'Bat Class :: initAlreadyDone' . ^ self ].
 	dicoBoat := Dictionary new.
-	caps := Array new: 8 .
-	caps at: 1 put: 0.
-	2 to: 8 do: [  :each | caps at: each  put: (caps at: each-1 ) + 45 ].
+	
+
 	
 ]
 
