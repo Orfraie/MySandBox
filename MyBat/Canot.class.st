@@ -24,6 +24,6 @@ Canot >> godille: aBoolean [
 
 { #category : #initialization }
 Canot >> initialize [ 	
-	" on met la godille dans le canaot "
+	" on met la godille dans le canot "
 	godille := true.
 ]

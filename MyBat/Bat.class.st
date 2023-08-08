@@ -46,7 +46,7 @@ Bat class >> dicoBat [
 
 { #category : #initialize }
 Bat class >> initClassVariable [
-	" Be sure initDone and dicoBoat are correctly setup when instance are created "
+	" Be sure initDone and dicoBat are correctly setup when instance are created "
 	InitDone ifNotNil: [ self logIt: 'Bat Class :: initAlreadyDone' . ^ self ].
 	InitDone := true.
 	DicoBat := Dictionary new.
