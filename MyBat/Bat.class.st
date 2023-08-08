@@ -29,6 +29,29 @@ Class {
 	#category : #MyBat
 }
 
+{ #category : #accessing }
+Bat class >> countBateau [
+	 ^ CountBateau
+]
+
+{ #category : #accessing }
+Bat class >> countTotalMove [
+	^CountTotalMove 
+]
+
+{ #category : #accessing }
+Bat class >> dicoBat [
+	^ DicoBat
+]
+
+{ #category : #initialize }
+Bat class >> initClassVariable [
+	" Be sure initDone and dicoBoat are correctly setup when instance are created "
+	InitDone ifNotNil: [ self logIt: 'Bat Class :: initAlreadyDone' . ^ self ].
+	InitDone := true.
+	DicoBat := Dictionary new.
+]
+
 { #category : #testing }
 Bat class >> isAbstract [
 		
@@ -39,6 +62,29 @@ Bat class >> isAbstract [
 Bat class >> logIt: aString [
 	" On se sert du Transcript, le plus simple pour le moment "
 	Transcript show: aString ; cr.
+]
+
+{ #category : #testing }
+Bat class >> maxX [ 
+	" "
+	^MaxX
+]
+
+{ #category : #accessing }
+Bat class >> maxY [
+	^MaxY
+]
+
+{ #category : #'instance creation' }
+Bat class >> new [ 
+	self == Bat ifTrue: 
+		[ self logIt: 'Tentative de création d''un Bat sans type précis.' . ^ nil].
+	^ super new
+]
+
+{ #category : #accessing }
+Bat class >> ventDirection [
+	^ VentDirection 
 ]
 
 { #category : #accessing }
