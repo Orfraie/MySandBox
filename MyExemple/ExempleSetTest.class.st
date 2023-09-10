@@ -8,6 +8,20 @@ Class {
 	#category : #'MyExemple-Tests'
 }
 
+{ #category : #tests }
+ExempleSetTest >> QuiContinuePas_adepanner [
+	" https://eng.libretexts.org/Bookshelves/Computer_Science/Programming_Languages/Book%3A_Pharo_by_Example_5.0_(Ducasse_Zagidulin_Hess_and_Chloupis)/09%3A_SUnit/9.08%3A_Continuing_After_a_Failure
+	"
+	| tmp1 |
+	tmp1 := OrderedCollection withAll: #( 2 10  2 3 4 5 6 7 8 9 1 ).
+	tmp1 do: [ :arg1 | 
+		self
+			assert: arg1 even
+			description: 	( arg1 printString , ' n''est pas pair mais je continue le test' )
+			resumable: true ].
+	self assert: true
+]
+
 { #category : #initialization }
 ExempleSetTest >> setUp [
 
@@ -136,20 +150,6 @@ ExempleSetTest >> testOccurences [
 		assert: (full occurrencesOf: 5) equals: 1.
 	full add: 5.
 	self assert: (full occurrencesOf: 5) equals: 1
-]
-
-{ #category : #tests }
-ExempleSetTest >> testQuiContinue [
-	" https://eng.libretexts.org/Bookshelves/Computer_Science/Programming_Languages/Book%3A_Pharo_by_Example_5.0_(Ducasse_Zagidulin_Hess_and_Chloupis)/09%3A_SUnit/9.08%3A_Continuing_After_a_Failure
-	"
-	| tmp1 |
-	tmp1 := OrderedCollection withAll: #( 2 10 1 2 3 4 5 6 7 8 9 ).
-	tmp1 do: [ :arg1 | 
-		self
-			assert: arg1 even
-			description: 	( arg1 printString , ' n''est pas pair mais je continue le test' )
-			resumable: true ].
-	self assert: true
 ]
 
 { #category : #tests }
