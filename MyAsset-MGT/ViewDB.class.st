@@ -30,7 +30,7 @@ Transcript nextPutAll: '-InitializeList selectedItemInList is ' ; nextPutAll: se
 
 { #category : #'as yet unclassified' }
 ViewDB >> list [ 	
-	" "
+	" Ici on retourne la liste "
 	^list 
 ]
 
@@ -55,7 +55,8 @@ ViewDB >> listIndex: anInteger [
 
 { #category : #'as yet unclassified' }
 ViewDB >> listMenu: aMenu [
-| targetClass differentMenu className |
+" yes , a menu "
+| targetClass differentMenu className dummyUnusedValue yesAnOther |
 className := list at: selectedItemInList 
 	ifAbsent: [^aMenu add: 'rien n''est sectionne' target: self selector: #beep].
 targetClass := Smalltalk at: className
