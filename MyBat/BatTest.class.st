@@ -16,8 +16,8 @@ BatTest >> testDePrintOn [
 
 { #category : #tests }
 BatTest >> testVraimentSimple [ 
-	"  deuxieme copie   "
-	| abat |
+	"  deuxieme copie    "
+	| abat b|
 	abat := Bat new.
 	self assert: (abat isMemberOf: Bat ) equals: false
 ]
