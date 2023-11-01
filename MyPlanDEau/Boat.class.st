@@ -3,7 +3,9 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'name',
-		'age'
+		'age',
+		'couleur',
+		'longueur'
 	],
 	#classVars : [
 		'BoatCnt'
@@ -35,11 +37,31 @@ Boat >> age: aAge [
 	age := aAge
 ]
 
+{ #category : #Accessing }
+Boat >> couleur [
+	^ couleur
+]
+
+{ #category : #settings }
+Boat >> couleur: aString [ 
+	couleur := aString.
+]
+
 { #category : #initialization }
 Boat >> initialize [ 
 	"init age et name "
 	name := 'aName'.
 	age := 23 .
+]
+
+{ #category : #accessing }
+Boat >> longueur [
+	^ longueur
+]
+
+{ #category : #settings }
+Boat >> longueur: anInteger [ 
+	longueur :=  anInteger
 ]
 
 { #category : #accessing }
