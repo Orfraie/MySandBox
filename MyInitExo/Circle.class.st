@@ -13,5 +13,5 @@ Circle >> area [
 { #category : #accessing }
 Circle >> radius [ 
 	"  "
-	^ 2
+	^ 4
 ]

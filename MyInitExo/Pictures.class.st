@@ -2,7 +2,7 @@
 C'est un exercice de délégation du calcul de la surface
 Extrait de la prez de SDucasse nommée 
 	Oriented-Object-Paradigm-PRESEQUEL-on-object-oriente-FR.mp4
-Dans l'exercice , on a un Square, un Triangle, et un Circle
+Dans l'exercice , on a un Square, un Triangle, et un Circle, et un Parallelogramme
 
 	|  total  shapes |
 	total := 0 .
