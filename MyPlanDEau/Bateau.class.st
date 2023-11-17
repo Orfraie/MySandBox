@@ -80,12 +80,15 @@ Bateau >> cap: anInteger [
 
 { #category : #accessing }
 Bateau >> initialize [
-	" set x , y , cap a des valeurs randomizées et create dicoBoat  "
+	" set x , y , cap à des valeurs randomizées et create dicoBoat  "
 	Transcript show: 'We are crossing Bateau-->initialize,.. with self class =', self class asString ; cr.
+	self cap: self class maxCap atRandom.
+	self halt.
 	self x: self class maxXY atRandom.
 	self y: self class maxXY atRandom.
-	self cap: self class maxCap atRandom.
-	self name: ''
+
+	self name: 'DefaultName'.
+	Transcript show: self printString ; cr .
 	
 ]
 
@@ -142,6 +145,9 @@ Bateau >> x [
 
 { #category : #accessing }
 Bateau >> x: anInteger [
+	" "
+	| m |
+	m := self class maxXY .
 	( anInteger < 0 and: [ anInteger <= self class maxXY] )
 	ifTrue: [  x := anInteger ]
 	

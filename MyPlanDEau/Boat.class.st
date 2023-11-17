@@ -5,7 +5,8 @@ Class {
 		'name',
 		'age',
 		'couleur',
-		'longueur'
+		'longueur',
+		'flotte'
 	],
 	#classVars : [
 		'BoatCnt'
@@ -52,6 +53,7 @@ Boat >> initialize [
 	"init age et name "
 	name := 'aName'.
 	age := 23 .
+	flotte := true .
 ]
 
 { #category : #accessing }
