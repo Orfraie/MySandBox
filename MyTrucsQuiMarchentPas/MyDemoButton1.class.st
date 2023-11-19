@@ -1,12 +1,12 @@
 Class {
 	#name : #MyDemoButton1,
 	#superclass : #Object,
-	#category : #MyExemple
+	#category : #MyTrucsQuiMarchentPas
 }
 
 { #category : #exemples }
 MyDemoButton1 >> example [
-
+" MyDemoButton1 new example "
 	| tmp2 |
 	"self halt. Juste parce qu'on ne voit rien apparaître a la ligne openInWorld" 
 	tmp2 := PluggableButtonMorph

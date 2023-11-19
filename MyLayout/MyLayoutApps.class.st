@@ -1,5 +1,5 @@
 "
-Ne marche pas du otu
+Ne marche pas du tout
 "
 Class {
 	#name : #MyLayoutApps,

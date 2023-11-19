@@ -1,9 +1,11 @@
 "
 How to run it .
 ---------------
-Bat new
-Bat initClassVariable 
-Canot new  godille: false inspect
+| aBat aCanot | 
+Bat new.
+Bat initClassVariable .
+aCanot := Canot new  godille: false.
+aCanot inspect
  
 
 "

@@ -45,8 +45,7 @@ key2= val with a space in it
 { #category : #tests }
 INIFileTest >> testEmptyValueOnRead [
 	| content in |
-	content := '[foo]
-key1 =      '.
+	content := '[foo] key1 =      '.
 
 	in := INIFile readFrom: content readStream.
 	self assert: ((in section: 'foo') at: 'key1') isNil

@@ -1,3 +1,10 @@
+"
+AsynCom createAnAsyncCom.
+
+Bon , ca ne marche , pas le code 'compile' mais il y a plein de trucs qui ne fonctionnent pas.
+A revoir à la campagne avec un cable et un raspberry
+2023 nov 19
+"
 Class {
 	#name : #AsyncCom,
 	#superclass : #Object,
