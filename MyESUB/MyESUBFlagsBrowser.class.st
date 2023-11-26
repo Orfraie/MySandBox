@@ -1,3 +1,6 @@
+"
+MyESUBFlagsBrowser new open.  "" 3 panes example with Spec2""
+"
 Class {
 	#name : #MyESUBFlagsBrowser,
 	#superclass : #SpPresenter,

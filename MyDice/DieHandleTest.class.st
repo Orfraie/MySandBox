@@ -10,7 +10,7 @@ Class {
 { #category : #tests }
 DieHandleTest >> testCreationAndAddingIsOk [
 	| handle |
-	handle := DieHandle new
+		handle := DieHandle new
 		addDie: (Die withFaces: 6) ;
 		addDie: (Die withFaces: 20) ;
 		yourself.

@@ -5,7 +5,7 @@ How to run it .
 Bat new.
 Bat initClassVariable .
 aCanot := Canot new  godille: false.
-aCanot inspect
+aCanot inspect.
  
 
 "
