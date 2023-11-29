@@ -76,13 +76,13 @@ Bateau >> cap: anInteger [
 	cap := anInteger
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 Bateau >> initialize [ 
 	" "
 	x := self class maxXY atRandom.
 	y := self class maxXY atRandom.
 	cap := self class maxCap atRandom.
-	name := 'aStdName'. "Do not use self asString parce qu'on a customizé printOn:."
+	name := 'aName' , (Time now asMilliSeconds // 1000) asString.
 	VentDirection := self class maxCap atRandom.
 ]
 
