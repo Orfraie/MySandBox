@@ -22,7 +22,7 @@ Class {
 Bateau class >> logIt: aString [ 	
 	" On se sert du Transcript, le plus simple pour le moment " 
 	| tt |
-	tt := Time now minutes asString, ' ' .	
+	tt := Time now asString, ' ' .	
 	Transcript show: tt,aString ; cr.
 ]
 
