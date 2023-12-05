@@ -5,7 +5,8 @@ Class {
 		'name',
 		'x',
 		'y',
-		'cap'
+		'cap',
+		'xy'
 	],
 	#classVars : [
 		'MaxCap',
@@ -62,11 +63,6 @@ Bateau class >> ventDirection [
 ]
 
 { #category : #accessing }
-Bateau class >> x [
-	^x.
-]
-
-{ #category : #accessing }
 Bateau >> cap [
 	^ cap
 ]
@@ -83,7 +79,8 @@ Bateau >> initialize [
 	y := self class maxXY atRandom.
 	cap := self class maxCap atRandom.
 	name := 'aName' , (Time now asMilliSeconds // 1000) asString.
-	VentDirection := self class maxCap atRandom.
+	"La direction du vent ne change pas pendant la simulation"
+	VentDirection ifNil: [  VentDirection := self class maxCap atRandom.].
 ]
 
 { #category : #accessing }
@@ -105,29 +102,16 @@ Bateau >> printOn: aStream [
 		nextPutAll: self name asString ;
 		nextPutAll: ' :: cap = ';
 		nextPutAll: self cap asString ;
-		nextPutAll: ' :: x = ';
-		nextPutAll: self x asString;
-		nextPutAll: ' :: y = ';
-		nextPutAll: self y asString .
-
+		nextPutAll: ' :: xy = ';
+		nextPutAll: self xy asString.
 ]
 
 { #category : #accessing }
-Bateau >> x [
-	^ x
+Bateau >> xy [
+	^ xy
 ]
 
-{ #category : #settings }
-Bateau >> x: anInteger [ 
-	x := anInteger
-]
-
-{ #category : #accessing }
-Bateau >> y [
-	^ y
-]
-
-{ #category : #settings }
-Bateau >> y: anInteger [ 
-	y := anInteger
+{ #category : #setting }
+Bateau >> xy: aPoint [ 
+	xy := aPoint
 ]
