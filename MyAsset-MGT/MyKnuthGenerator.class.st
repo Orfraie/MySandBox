@@ -49,7 +49,7 @@ MyKnuthGenerator >> initialize [
 
 { #category : #initialization }
 MyKnuthGenerator >> next [
-	"ENSURE: result is a random floatong point number between 0 and 1"
+	"ENSURE:   result is a random floatong point number between 0 and 1"
 	seed := ( A * seed +C ) rem: M.
 	^ (seed / M ) asFloat
 ]
