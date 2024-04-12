@@ -114,7 +114,7 @@ AsyncCom >> defaultModeCmd [
 AsyncCom >> initialize [
         "Initialize the class variables for
          detecting recursive data structures. (ST)
-         Message d'horreur et tutiquanti initialise"
+         Message d'horreur et tutiquanti initialise, a revoir"
     RecursiveSet := Set new.
     RecursionInError := false.
        ClassInitDone := True.
