@@ -9,6 +9,7 @@ Class {
 
 { #category : #accessing }
 Chat >> joie [
+	" La joie du chat"
 	^ joie
 ]
 
