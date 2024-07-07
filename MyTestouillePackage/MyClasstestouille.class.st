@@ -9,7 +9,7 @@ Class {
 
 { #category : #accessing }
 MyClasstestouille >> anInteger [
-	" bla bla bla "
+	" bla bla bla bla "
 	^anInteger
 ]
 
