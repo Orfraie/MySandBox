@@ -15,7 +15,7 @@ MyClasstestouille >> anInteger [
 
 { #category : #accessing }
 MyClasstestouille >> anInteger: i [
-	" bla bla "
+	" bla bla bla "
 	i ifNil: [ anInteger := 100 ]
 	i ifNotNil: [ anInteger := i ]
 ]
