@@ -7,7 +7,7 @@ Class {
 { #category : #tests }
 BatTest >> testDePrintOn [
 	"  deuxieme copie et deuxieme version   "
-	| aCanot aDummyVariable |
+	| aCanot  |
 	Bat initClassVariable.
 	aCanot := Canot new.
 	Bat logIt: (aCanot printString).
