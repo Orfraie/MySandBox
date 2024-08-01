@@ -211,7 +211,7 @@ Logging class >> test2rsyslog [
 
 { #category : #openFileSocket }
 Logging >> closeAllSupport [
-	"cloase all,.."
+	"cloase all,..."
 	logFileDesc close.
 	self initDone: false.
 	udpSocket closeAndDestroy.
