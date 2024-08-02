@@ -6,6 +6,6 @@ Class {
 
 { #category : #abstract }
 Apurger >> reflex [
-	" un deux trois  "
+	" un deux trois quatre "
 	^self 
 ]
