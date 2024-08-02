@@ -28,6 +28,7 @@ DieHandleTest >> testCreationWithTheSameDie [
 
 { #category : #tests }
 DieHandleTest >> testMaxValue [
+" bla bla "
 	| handle |
 	handle := DieHandle new addDie: (Die withFaces: 6).
 	handle addDie: (Die withFaces: 10).
