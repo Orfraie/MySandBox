@@ -37,6 +37,7 @@ DieHandleTest >> testMaxValue [
 
 { #category : #tests }
 DieHandleTest >> testRoll [
+	" roll 1 "
 	| handle |
 	handle := DieHandle new 
 		addDie: (Die withFaces: 6);
