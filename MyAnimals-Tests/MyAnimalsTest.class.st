@@ -6,6 +6,6 @@ Class {
 
 { #category : #tests }
 MyAnimalsTest >> testNeFaitRien [
-	" rien n'est vraiment fait"
+	" rien n'est vraiment fait du tout"
 	^ self
 ]
