@@ -5,7 +5,7 @@ Class {
 }
 
 { #category : #tests }
-MyPKGTest >> test_quiNeFaitRien [
-	" "
+MyPKGTest >> testQuiNeFaitRien [
+	"  "
 	^self
 ]
