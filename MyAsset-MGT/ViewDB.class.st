@@ -30,7 +30,7 @@ Transcript nextPutAll: '-InitializeList selectedItemInList is ' ; nextPutAll: se
 
 { #category : #'as yet unclassified' }
 ViewDB >> list [ 	
-	" Ici on retourne la liste "
+	" Ici on retourne la liste  "
 	^list 
 ]
 
