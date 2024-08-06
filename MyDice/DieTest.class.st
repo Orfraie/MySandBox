@@ -2,26 +2,27 @@
 This class contains tests
 "
 Class {
-	#name : #DieTest,
-	#superclass : #TestCase,
-	#category : #MyDice
+	#name : 'DieTest',
+	#superclass : 'TestCase',
+	#category : 'MyDice',
+	#package : 'MyDice'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 DieTest >> testCreationIsOk [
 	| d |
 	d := Die withFaces: 20.
 	self assert: d faces equals: 20
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DieTest >> testInitializationIsOk [
 	| d |
 	d := Die new.
 	self assert: d faces equals: 6
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DieTest >> testRolling [
 	| d |
 	d := Die new.

@@ -24,15 +24,16 @@ Internal Representation and Key Implementation Points.
     Implementation Points
 "
 Class {
-	#name : #DieHandle,
-	#superclass : #Object,
+	#name : 'DieHandle',
+	#superclass : 'Object',
 	#instVars : [
 		'dice'
 	],
-	#category : #MyDice
+	#category : 'MyDice',
+	#package : 'MyDice'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DieHandle >> + aDieHandle [
 	| handle |
 	handle := DieHandle new.
@@ -41,28 +42,28 @@ DieHandle >> + aDieHandle [
 	^ handle
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DieHandle >> addDie: aDie [
 	dice add: aDie
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DieHandle >> dice [
 	^ dice
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DieHandle >> diceNumber [
 	^ dice size
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DieHandle >> initialize [
 	super initialize.
 	dice :=  OrderedCollection new 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DieHandle >> maxValue [
 	| res |
 	res := 0.
@@ -70,7 +71,7 @@ DieHandle >> maxValue [
 	^ res
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DieHandle >> roll [
 	| res |
 	res := 0.

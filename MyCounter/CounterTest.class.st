@@ -1,13 +1,14 @@
 Class {
-	#name : #CounterTest,
-	#superclass : #TestCase,
+	#name : 'CounterTest',
+	#superclass : 'TestCase',
 	#instVars : [
 		'count'
 	],
-	#category : #MyCounter
+	#category : 'MyCounter',
+	#package : 'MyCounter'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 CounterTest >> testAllMethods [
 | c |
 c := Counter  startingAt: 5.
@@ -15,7 +16,7 @@ self assert: ( c increment ; count ) equals: 6
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CounterTest >> testCounterIsSetAndRead [
 | c |
 c := Counter  new.
@@ -23,7 +24,7 @@ c count: 7.
 self assert: c count equals: 7
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CounterTest >> testDecrement [
 | c |
 c := Counter  new.
@@ -33,7 +34,7 @@ self assert: c count equals: 0
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CounterTest >> testIncrement [
 | c |
 c := Counter  new.
@@ -43,15 +44,24 @@ self assert: c count equals: 4
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CounterTest >> testInitialize [
 | c |
 c := Counter  new.
-self assert: c count equals: 99
+self assert: c count equals: 0
  
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
+CounterTest >> testPrintOn [
+| str aStream |
+aStream := WriteStream on: String new.
+str := Counter  startingAt: 10 ; printOn: aStream.
+^ self assert: aStream contents equals: 'Counter'
+ 
+]
+
+{ #category : 'tests' }
 CounterTest >> testStartingAtFive [
 | c |
 c := Counter  startingAt: 5.

@@ -1,6 +1,6 @@
 Class {
-	#name : #LBoardUITest,
-	#superclass : #TestCase,
+	#name : 'LBoardUITest',
+	#superclass : 'TestCase',
 	#instVars : [
 		'boardUI'
 	],
@@ -9,12 +9,13 @@ Class {
 		'boardUI',
 		'ant'
 	],
-	#category : #MyLangton
+	#category : 'MyLangton',
+	#package : 'MyLangton'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 LBoardUITest >> setUp [
-
+Transcript show: 'RTView n''existe plus, il faut réécrire LBoardUI, 2024 juillet 29 ' ; cr.
 super setUp.
 boardUI := LBoardUI new.
 
@@ -22,14 +23,14 @@ boardUI := LBoardUI new.
 
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 LBoardUITest >> testColorPosition [
 
 self assert: (boardUI boardColorAtPosition: 5@5) equals: Color blue
 
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 LBoardUITest >> testCreation [
 
 self assert: boardUI numberOfAntUI equals: 0.

@@ -1,28 +1,29 @@
 Class {
-	#name : #LDummyAntTest,
-	#superclass : #TestCase,
+	#name : 'LDummyAntTest',
+	#superclass : 'TestCase',
 	#instVars : [
 		'ant',
 		'board'
 	],
-	#category : #MyLangton
+	#category : 'MyLangton',
+	#package : 'MyLangton'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 LDummyAntTest >> setUp [
 
 ant := LDummyAnt antPosition: 5@5.
 board := LBoard new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LDummyAntTest >> testCreation [
 
 self assert: ant position equals: ant defaultPosition.
 self assert: ant angleDirection equals: ant defaultAngleDirection
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LDummyAntTest >> testMove [
 
 |oldPosition newPosition oldAngle newAngle|

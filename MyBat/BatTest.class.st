@@ -1,10 +1,12 @@
 Class {
-	#name : #BatTest,
-	#superclass : #TestCase,
-	#category : #'MyBat-Tests'
+	#name : 'BatTest',
+	#superclass : 'TestCase',
+	#category : 'MyBat-Tests',
+	#package : 'MyBat',
+	#tag : 'Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 BatTest >> testDePrintOn [
 	"  deuxieme copie et deuxieme version   "
 	| aCanot aDummyVariable |
@@ -14,7 +16,7 @@ BatTest >> testDePrintOn [
 	self assert: (aCanot isMemberOf: Canot ) equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BatTest >> testVraimentSimple [ 
 	"  deuxieme copie    "
 	| abat b|

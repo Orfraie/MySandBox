@@ -1,6 +1,6 @@
 Class {
-	#name : #LAnt,
-	#superclass : #Object,
+	#name : 'LAnt',
+	#superclass : 'Object',
 	#instVars : [
 		'position',
 		'angleDirection',
@@ -10,10 +10,11 @@ Class {
 	#classInstVars : [
 		'position'
 	],
-	#category : #MyLangton
+	#category : 'MyLangton',
+	#package : 'MyLangton'
 }
 
-{ #category : #factories }
+{ #category : 'factories' }
 LAnt class >> antPosition: aPoint [
 |ant|
 ant := LAnt new.
@@ -21,82 +22,82 @@ ant position: aPoint.
 ^ ant
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LAnt >> angleDirection [
 	"Return the angle the ant is taking"
 	^ angleDirection
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LAnt >> board [
 	"Return the board I am in"
 	^ board
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LAnt >> board: aBoard [
 	board := aBoard.
 	self updateBoardWithPreviousPosition.
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 LAnt >> boardValueForLeft [
 	^ self id
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 LAnt >> boardValueForRight [
 	^ 0
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LAnt >> boardValueInFront [
 	"Return the value of the board in ant position"
 	^ board at: self position
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 LAnt >> changeAngleDirection: anAngle [
 	angleDirection := angleDirection + anAngle
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 LAnt >> defaultAngleDirection [
 	^ 0
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 LAnt >> defaultPosition [
 	^ 5 @ 5
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 LAnt >> degreesForLeft [
 	^ -90
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 LAnt >> degreesForRight [
 	^ 90
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 LAnt >> deltaPoint [
 	"Return a point representing the direction of the ant. For example 1 @ 0 means the ant is moving to the right"
-	^ angleDirection degreeCos @ angleDirection degreeSin
+	^ angleDirection degreeCos asInteger @ angleDirection degreeSin asInteger
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 LAnt >> id [
 	^ id.
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 LAnt >> id: anInteger [.
 	id := anInteger.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 LAnt >> initialize [
 	super initialize.
 	angleDirection := self defaultAngleDirection.
@@ -104,7 +105,7 @@ LAnt >> initialize [
 	self board: LBoard new.
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 LAnt >> move [
 	"Make the ant move, according to the value of the board in front of me"
 	self changeAngleDirection: self moveTest. 
@@ -112,7 +113,7 @@ LAnt >> move [
 
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 LAnt >> moveForward [
 	"Move the ant by a delta corresponding to the direction"
 	position := ((position +self deltaPoint + (board size-(1@1))) \\ (board size))+(1@1).
@@ -120,55 +121,61 @@ LAnt >> moveForward [
 	self updateBoardWithPreviousPosition.
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 LAnt >> moveTest [
 	self shouldTurnLeft
 		ifTrue: [ ^ self degreesForLeft ]
 		ifFalse: [ ^ self degreesForRight ].
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 LAnt >> moveTestDirection [
 	self shouldTurnLeft
 		ifTrue: [ ^ #left ]
 		ifFalse: [ ^ #right ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LAnt >> position [ 
 	"Return the position of the ant in the board"
 	^ position
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LAnt >> position: aPoint [
 	"Return the position of the ant in the board"
 	position := aPoint
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 LAnt >> previousPosition [
+	| p0 p1 p2 |
+	p0 := self deltaPoint.
+	p1 := (position - self deltaPoint ) . 
+	p2 := (board size - (1 @ 1)).
+	"self halt."
 	^ (position - self deltaPoint + (board size - (1 @ 1))) \\ board size + (1 @ 1)
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 LAnt >> shouldTurnLeft [
 	"Return true if the board value in front of me makes me turn left"
 
 	^ self boardValueInFront ~= self boardValueForRight
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 LAnt >> shouldTurnRight [
 	"Return true if the board value in front of me makes me turn right"
 
 	^ self boardValueInFront = self boardValueForRight
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 LAnt >> updateBoardWithPreviousPosition [
-
+	"self halt."
 	(board at: self previousPosition) = self boardValueForLeft
 		ifTrue: [ board at: self previousPosition put: self boardValueForRight ]
-		ifFalse: [ board at: self previousPosition put: self boardValueForLeft ]
+		ifFalse: [ board at: self previousPosition put: self boardValueForLeft ].
+	"Transcript show: (self position) printString; cr."
 ]

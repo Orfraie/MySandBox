@@ -1,20 +1,21 @@
 Class {
-	#name : #LAntTest,
-	#superclass : #TestCase,
+	#name : 'LAntTest',
+	#superclass : 'TestCase',
 	#instVars : [
 		'ant'
 	],
-	#category : #MyLangton
+	#category : 'MyLangton',
+	#package : 'MyLangton'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 LAntTest >> setUp [
 
 	super setUp.
 	ant := LAnt antPosition: 5@5.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LAntTest >> testChangeDirection [
 	" test failed "
 	| oldAngle newAngle |
@@ -26,7 +27,7 @@ LAntTest >> testChangeDirection [
 	self assert: newAngle equals: 90.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LAntTest >> testChangeDirectionAndMove [
 
 	| oldPosition deltaPoint |
@@ -39,13 +40,13 @@ LAntTest >> testChangeDirectionAndMove [
 	self assert: ant position equals: oldPosition + deltaPoint
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LAntTest >> testCreation [
 	self assert: ant position equals: ant defaultPosition.
 	self assert: ant angleDirection equals: ant defaultAngleDirection 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LAntTest >> testMove [
 	| oldPosition newPosition oldAngleDirection |
 	oldAngleDirection := ant angleDirection.

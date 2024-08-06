@@ -7,16 +7,17 @@ La variable d’instance teapotServer référence l’instance du serveur TeaPot
 que l’on créée à l’aide de la méthode initializePort
 "
 Class {
-	#name : #TCServer,
-	#superclass : #Object,
+	#name : 'TCServer',
+	#superclass : 'Object',
 	#instVars : [
 		'teapotServer',
 		'messagesQueue'
 	],
-	#category : #MyTinyChat
+	#category : 'MyTinyChat',
+	#package : 'MyTinyChat'
 }
 
-{ #category : #public }
+{ #category : 'public' }
 TCServer class >> startOn: aPortNumber [
 	" ? "
 	^ self new
@@ -26,26 +27,26 @@ TCServer class >> startOn: aPortNumber [
 		yourself.
 ]
 
-{ #category : #registering }
+{ #category : 'registering' }
 TCServer class >> stopAll [
 	"ces"	
 	self allInstancesDo: #stop 
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 TCServer >> addMessage: aRequest [
 	" ? "
 	messagesQueue add: (TCMessage from: (aRequest at: #sender) text: (aRequest at: #text)).
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TCServer >> initialize [ 
 	" ? "	
 	super initialize.
 	messagesQueue := TCMessageQueue new.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TCServer >> initializePort: anInteger [
 	"cs"	
 	teapotServer := Teapot configure: { 
@@ -56,23 +57,23 @@ TCServer >> initializePort: anInteger [
 	teapotServer start.
 ]
 
-{ #category : #'public protocol' }
+{ #category : 'public protocol' }
 TCServer >> messageCount [
 	^ messagesQueue size
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 TCServer >> messagesFrom: request [
 	^ messagesQueue formattedMessagesFrom: (request at: #id)
 ]
 
-{ #category : #register }
+{ #category : 'register' }
 TCServer >> registerErrorHandlers [
 	teapotServer
 		exception: KeyNotFound -> (TeaResponse notFound body: 'No such message')
 ]
 
-{ #category : #register }
+{ #category : 'register' }
 TCServer >> registerRoutes [
 	"Le routage HTTP est défini dans la méthode registerRoutes . Trois opérations sont définies :
 	• GET messages/count : retourne au client le nombre de messages reçus par le serveur,
@@ -85,7 +86,7 @@ TCServer >> registerRoutes [
 		POST: '/messages/add' -> (Send message: #addMessage: to: self)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TCServer >> stop [ 
 	"c"
 	teapotServer stop.

@@ -3,12 +3,13 @@ Quelques tests unitaires pour la queue de msg
 
 "
 Class {
-	#name : #TCMessageQueueTest,
-	#superclass : #TestCase,
-	#category : #MyTinyChat
+	#name : 'TCMessageQueueTest',
+	#superclass : 'TestCase',
+	#category : 'MyTinyChat',
+	#package : 'MyTinyChat'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 TCMessageQueueTest class >> testCreationQueue [
 	"co"	
 			
@@ -17,7 +18,7 @@ TCMessageQueueTest class >> testCreationQueue [
 	self assert: aQueue size equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TCMessageQueueTest >> testAddMsgToQueue [
 	" ? "
 			
@@ -28,7 +29,7 @@ TCMessageQueueTest >> testAddMsgToQueue [
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TCMessageQueueTest >> testCreationQueue [
 	" ? "
 			
@@ -38,7 +39,7 @@ TCMessageQueueTest >> testCreationQueue [
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TCMessageQueueTest >> testPartialExtractFromQueue [
 	" ? "
 			
@@ -51,7 +52,7 @@ TCMessageQueueTest >> testPartialExtractFromQueue [
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TCMessageQueueTest >> testRemoveQueue [
 	" ? "
 			
@@ -63,7 +64,7 @@ TCMessageQueueTest >> testRemoveQueue [
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TCMessageQueueTest >> testResetQueue [
 	" ? "
 			

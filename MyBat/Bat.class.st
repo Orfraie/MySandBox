@@ -10,8 +10,8 @@ aCanot inspect.
 
 "
 Class {
-	#name : #Bat,
-	#superclass : #Object,
+	#name : 'Bat',
+	#superclass : 'Object',
 	#instVars : [
 		'x',
 		'y',
@@ -28,25 +28,26 @@ Class {
 		'MaxY',
 		'VentDirection'
 	],
-	#category : #MyBat
+	#category : 'MyBat',
+	#package : 'MyBat'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Bat class >> countBateau [
 	 ^ CountBateau
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Bat class >> countTotalMove [
 	^CountTotalMove 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Bat class >> dicoBat [
 	^ DicoBat
 ]
 
-{ #category : #initialize }
+{ #category : 'initialize' }
 Bat class >> initClassVariable [
 	" Be sure initDone and dicoBat are correctly setup when instance are created "
 	InitDone ifNotNil: [ self logIt: 'Bat Class :: initAlreadyDone' . ^ self ].
@@ -54,62 +55,63 @@ Bat class >> initClassVariable [
 	DicoBat := Dictionary new.
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 Bat class >> isAbstract [
 		
 	^ self == Bat
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 Bat class >> logIt: aString [
 	" On se sert du Transcript, le plus simple pour le moment "
 	Transcript show: aString ; cr.
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 Bat class >> maxX [ 
 	" "
 	^MaxX
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Bat class >> maxY [
 	^MaxY
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 Bat class >> new [ 
 	self == Bat ifTrue: 
 		[ self logIt: 'Tentative de création d''un Bat sans type précis.' . ^ nil].
 	^ super new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Bat class >> ventDirection [
 	^ VentDirection 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Bat >> cap [
+	" fixe le cap "
 	^ cap
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Bat >> moveCount [
 	^ moveCount
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Bat >> name [
 	^ name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Bat >> name: aString [
 	name := aString
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 Bat >> printOn: aStream [ 
 	" Largement  adapté aux variables d'instance de la classe Bateau"
 	| si sc i j k |
@@ -130,12 +132,12 @@ Bat >> printOn: aStream [
 	aStream nextPutAll: si ; cr ; nextPutAll: sc ; cr.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Bat >> x [
 	^ x
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Bat >> y [
 	^ y
 ]

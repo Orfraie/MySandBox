@@ -2,27 +2,28 @@
 Fille de Bat avec une godille
 "
 Class {
-	#name : #Canot,
-	#superclass : #Bat,
+	#name : 'Canot',
+	#superclass : 'Bat',
 	#instVars : [
 		'godille'
 	],
-	#category : #MyBat
+	#category : 'MyBat',
+	#package : 'MyBat'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Canot >> godille [
 	" On verifie que la godille est bien a bord."
 	^godille
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Canot >> godille: aBoolean [
 	"On met ou retire la godille du canot "
 	godille := aBoolean
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 Canot >> initialize [ 	
 	" on met la godille dans le canot "
 	godille := true.

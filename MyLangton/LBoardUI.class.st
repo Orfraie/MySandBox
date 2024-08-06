@@ -1,6 +1,6 @@
 Class {
-	#name : #LBoardUI,
-	#superclass : #Object,
+	#name : 'LBoardUI',
+	#superclass : 'Object',
 	#instVars : [
 		'board',
 		'view',
@@ -15,10 +15,11 @@ Class {
 		'antUIs',
 		'bugForm'
 	],
-	#category : #MyLangton
+	#category : 'MyLangton',
+	#package : 'MyLangton'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 LBoardUI >> addAnt [
 |antUIElement|
 	antUIElement := self createAntUI: self createAnt.
@@ -26,12 +27,12 @@ LBoardUI >> addAnt [
 	self updateAntUIList.
 ]
 
-{ #category : #utility }
+{ #category : 'utility' }
 LBoardUI >> boardColorAtPosition: position [
 	^ colors  at: (board at: position) + self colorIndex.
 ]
 
-{ #category : #utility }
+{ #category : 'utility' }
 LBoardUI >> cellShape [
 	"Return the shape used to paint a cell. The color is given by the value of the board cell, a number"
 	^ RTBox new
@@ -39,12 +40,12 @@ LBoardUI >> cellShape [
 		color: [ :position| self boardColorAtPosition: position ]
 ]
 
-{ #category : #utility }
+{ #category : 'utility' }
 LBoardUI >> colorIndex [
 	^ 1
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 LBoardUI >> createAnt [
 	"Adds a new LAnt element to the list and adds it to the board"
 	|tempAnt|
@@ -54,7 +55,7 @@ LBoardUI >> createAnt [
 	^ tempAnt
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 LBoardUI >> createAntUI: antElement [
 |antUI|
 	antUI := (RTBitmap new
@@ -64,18 +65,18 @@ LBoardUI >> createAntUI: antElement [
 	^ antUI
 ]
 
-{ #category : #configuration }
+{ #category : 'configuration' }
 LBoardUI >> defaultBugForm [
 	^ (Form fromFileNamed: '/Users/ignaciosImaelMac/Desktop/ant.png') scaledToSize: 20 @ 20
 ]
 
-{ #category : #configuration }
+{ #category : 'configuration' }
 LBoardUI >> defaultCellSize [
 	"Size of a board cell in pixels"
 	^ 20
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 LBoardUI >> fillBoard [
 	| e shape |
 	shape := self cellShape.
@@ -86,7 +87,7 @@ LBoardUI >> fillBoard [
 			e translateTo: (x * self defaultCellSize) @ (y * self defaultCellSize) ] ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 LBoardUI >> initialize [
 	super initialize.
 	self initializeBoard.
@@ -94,31 +95,31 @@ LBoardUI >> initialize [
 	self initializeOrderedCollections
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 LBoardUI >> initializeBoard [
 	board := LBoard new.
 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 LBoardUI >> initializeMenu [
 	view addMenu: 'Inspect Board' callback: [ board inspect ].
 	view addMenu: 'Add Ant' callback: [ self addAnt ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 LBoardUI >> initializeOrderedCollections [
 	antUIs := OrderedCollection new.
 	colors := OrderedCollection new.
 	colors add: Color blue
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 LBoardUI >> initializeView [
 	view := RTView new
 ]
 
-{ #category : #'menu callback' }
+{ #category : 'menu callback' }
 LBoardUI >> moveAntUI: antUIElement [
 	| bugForm rotatedBugForm ant|
 	ant := antUIElement model.
@@ -128,12 +129,12 @@ LBoardUI >> moveAntUI: antUIElement [
 	^ ant move
 ]
 
-{ #category : #'menu callback' }
+{ #category : 'menu callback' }
 LBoardUI >> numberOfAntUI [
 ^ antUIs size
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 LBoardUI >> open [
 	"
 	self new open
@@ -145,7 +146,7 @@ LBoardUI >> open [
 	^ view
 ]
 
-{ #category : #'menu callback' }
+{ #category : 'menu callback' }
 LBoardUI >> setAutomaticRefresh [
 |anim|
 	anim := RTActiveAnimation new.
@@ -159,12 +160,12 @@ LBoardUI >> setAutomaticRefresh [
 	anim inView: view
 ]
 
-{ #category : #boardUpdate }
+{ #category : 'boardUpdate' }
 LBoardUI >> updateAntUI: antUIElement [
 	^ antUIElement translateTo: antUIElement model position * self defaultCellSize
 ]
 
-{ #category : #boardUpdate }
+{ #category : 'boardUpdate' }
 LBoardUI >> updateAntUIList [
 	"Move the ants"
 	antUIs do: [ :antUIElement | self updateAntUI: antUIElement ]

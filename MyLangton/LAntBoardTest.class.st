@@ -1,14 +1,15 @@
 Class {
-	#name : #LAntBoardTest,
-	#superclass : #TestCase,
+	#name : 'LAntBoardTest',
+	#superclass : 'TestCase',
 	#instVars : [
 		'board',
 		'ant'
 	],
-	#category : #MyLangton
+	#category : 'MyLangton',
+	#package : 'MyLangton'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 LAntBoardTest >> setUp [
 
 	ant := LAnt new.
@@ -16,18 +17,18 @@ LAntBoardTest >> setUp [
 	board addAnt: ant
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LAntBoardTest >> testAnt [
 	self assert: ant board equals: board
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LAntBoardTest >> testAntAndBoardValue [
 
 	self assert: (board at: ant position) equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LAntBoardTest >> testAntMove [
 
 	| caseInFront |
@@ -38,7 +39,7 @@ LAntBoardTest >> testAntMove [
 	self deny: ant shouldTurnLeft.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LAntBoardTest >> testCreation [
 
 	self assert: LBoard new numberOfAnts equals: 0.

@@ -2,12 +2,13 @@
 This class contains testss
 "
 Class {
-	#name : #DieHandleTest,
-	#superclass : #TestCase,
-	#category : #MyDice
+	#name : 'DieHandleTest',
+	#superclass : 'TestCase',
+	#category : 'MyDice',
+	#package : 'MyDice'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 DieHandleTest >> testCreationAndAddingIsOk [
 	| handle |
 		handle := DieHandle new
@@ -17,7 +18,7 @@ DieHandleTest >> testCreationAndAddingIsOk [
 	self assert: handle diceNumber equals: 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DieHandleTest >> testCreationWithTheSameDie [
 	| handle |
 	handle := DieHandle new addDie: (Die withFaces: 6).
@@ -26,15 +27,16 @@ DieHandleTest >> testCreationWithTheSameDie [
 	self assert: handle diceNumber equals: 2.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DieHandleTest >> testMaxValue [
+" bla bla "
 	| handle |
 	handle := DieHandle new addDie: (Die withFaces: 6).
 	handle addDie: (Die withFaces: 10).
 	self assert: handle maxValue equals: 16.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DieHandleTest >> testRoll [
 	| handle |
 	handle := DieHandle new 
@@ -45,13 +47,13 @@ DieHandleTest >> testRoll [
 		[  self assert: ( handle roll between: handle diceNumber and:  handle maxValue )]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DieHandleTest >> testSimpleCreation [
 	self assert: 2 D20 diceNumber equals: 2
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DieHandleTest >> testSumming [
 	self assert: (1 D4 + 2 D20 ) diceNumber equals:  3
 ]

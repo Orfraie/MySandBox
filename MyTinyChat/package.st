@@ -1,1 +1,1 @@
-Package { #name : #MyTinyChat }
+Package { #name : 'MyTinyChat' }

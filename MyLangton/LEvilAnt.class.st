@@ -1,10 +1,11 @@
 Class {
-	#name : #LEvilAnt,
-	#superclass : #LAnt,
-	#category : #MyLangton
+	#name : 'LEvilAnt',
+	#superclass : 'LAnt',
+	#category : 'MyLangton',
+	#package : 'MyLangton'
 }
 
-{ #category : #factories }
+{ #category : 'factories' }
 LEvilAnt class >> antPosition: aPoint [
 |evilAnt|
 evilAnt := LEvilAnt new.
@@ -12,20 +13,20 @@ evilAnt position: aPoint.
 ^ evilAnt
 ]
 
-{ #category : #action }
+{ #category : 'action' }
 LEvilAnt >> move [
 	self changeAngleDirection: self moveTest.
 	self moveForward
 ]
 
-{ #category : #action }
+{ #category : 'action' }
 LEvilAnt >> moveTest [
 	self shouldTurnLeft
 		ifTrue: [ ^ self degreesForRight ]
 		ifFalse: [ ^ self degreesForLeft ].
 ]
 
-{ #category : #action }
+{ #category : 'action' }
 LEvilAnt >> moveTestDirection [
 	self shouldTurnLeft
 		ifTrue: [ ^ #right ]

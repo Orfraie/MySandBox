@@ -1,10 +1,11 @@
 Class {
-	#name : #TCConsole,
-	#superclass : #SpPresenter,
+	#name : 'TCConsole',
+	#superclass : 'SpPresenter',
 	#instVars : [
 		'list',
 		'input',
 		'chat'
 	],
-	#category : #MyTinyChat
+	#category : 'MyTinyChat',
+	#package : 'MyTinyChat'
 }

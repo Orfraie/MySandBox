@@ -24,15 +24,16 @@ Internal Representation and Key Implementation Points.
     Implementation Points
 "
 Class {
-	#name : #Die,
-	#superclass : #Object,
+	#name : 'Die',
+	#superclass : 'Object',
 	#instVars : [
 		'faces'
 	],
-	#category : #MyDice
+	#category : 'MyDice',
+	#package : 'MyDice'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 Die class >> withFaces: anInteger [ 
 	| d |
 	d := Die new.
@@ -40,31 +41,31 @@ Die class >> withFaces: anInteger [
 	^d
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Die >> faces [
 	" blabla "
 	^ faces
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Die >> faces: anInteger [ 
 	faces := anInteger
 ]
 
-{ #category : #initalize }
+{ #category : 'initalize' }
 Die >> initialize [
 	super initialize.
 	faces := 6
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Die >> printOn: aStream [
 	" a die (faces number)  Evaluate Die withFaces: 6 to show"
 	super printOn: aStream.
 	aStream nextPutAll: ' (', faces printString, ')'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Die >> roll [
 	^ faces atRandom
 ]

@@ -1,10 +1,11 @@
 Class {
-	#name : #TCMessageTest,
-	#superclass : #TestCase,
-	#category : #MyTinyChat
+	#name : 'TCMessageTest',
+	#superclass : 'TestCase',
+	#category : 'MyTinyChat',
+	#package : 'MyTinyChat'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 TCMessageTest >> testCreationWithFromString [
 	" ? "
 			
@@ -13,7 +14,7 @@ TCMessageTest >> testCreationWithFromString [
 	self assert: aMsg sender equals: 'Olivier'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TCMessageTest >> testCreationWithFromText [
 	" ? "
 			

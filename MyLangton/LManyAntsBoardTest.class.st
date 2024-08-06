@@ -1,14 +1,15 @@
 Class {
-	#name : #LManyAntsBoardTest,
-	#superclass : #TestCase,
+	#name : 'LManyAntsBoardTest',
+	#superclass : 'TestCase',
 	#instVars : [
 		'board',
 		'ant'
 	],
-	#category : #MyLangton
+	#category : 'MyLangton',
+	#package : 'MyLangton'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LManyAntsBoardTest >> setUp [
 
 super setUp.
@@ -17,7 +18,7 @@ board := LBoard new.
 board addAnt: ant. 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LManyAntsBoardTest >> testAddAnt [
 
 |newAnt|
@@ -28,7 +29,7 @@ self assert: (board ants at: 2) equals: newAnt.
 self assert: (board ants at: 1) equals: ant.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LManyAntsBoardTest >> testAntIndex [
 | tmpAnt index |
 1 to: 4 do: [ : i | board addAnt: (LAnt antPosition: (10 atRandom @ 10 atRandom ))].
@@ -41,7 +42,7 @@ self assert: tmpAnt boardValueForLeft equals: (tmpAnt id)
 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LManyAntsBoardTest >> testCreation [
 
 self assert: ant board equals: board

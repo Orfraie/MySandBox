@@ -1,6 +1,6 @@
-Extension { #name : #Integer }
+Extension { #name : 'Integer' }
 
-{ #category : #'*MyDice' }
+{ #category : '*MyDice' }
 Integer >> D10 [
 	^ self D: 10
 	
@@ -8,7 +8,7 @@ Integer >> D10 [
 	
 ]
 
-{ #category : #'*MyDice' }
+{ #category : '*MyDice' }
 Integer >> D12 [
 	^ self D: 12
 	
@@ -16,7 +16,7 @@ Integer >> D12 [
 	
 ]
 
-{ #category : #'*MyDice' }
+{ #category : '*MyDice' }
 Integer >> D20 [
 	^ self D: 20
 	
@@ -24,7 +24,7 @@ Integer >> D20 [
 	
 ]
 
-{ #category : #'*MyDice' }
+{ #category : '*MyDice' }
 Integer >> D4 [
 	^ self D: 4
 	
@@ -32,7 +32,7 @@ Integer >> D4 [
 	
 ]
 
-{ #category : #'*MyDice' }
+{ #category : '*MyDice' }
 Integer >> D6 [
 	^ self D: 6
 	
@@ -40,7 +40,7 @@ Integer >> D6 [
 	
 ]
 
-{ #category : #'*MyDice' }
+{ #category : '*MyDice' }
 Integer >> D: aNumber [
 	"Le message D: est envoyé au receiver qui est un integer"
 	| handle |

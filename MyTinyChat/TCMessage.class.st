@@ -5,29 +5,30 @@ Les variables d’instances sont les suivantes:
 • separator : un caractère séparateur pour l’affichage.
 "
 Class {
-	#name : #TCMessage,
-	#superclass : #Object,
+	#name : 'TCMessage',
+	#superclass : 'Object',
 	#instVars : [
 		'sender',
 		'separator',
 		'text'
 	],
-	#category : #MyTinyChat
+	#category : 'MyTinyChat',
+	#package : 'MyTinyChat'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TCMessage class >> from: aSender text: aText [
 	" creer une instance de TCMsg avec aSender et aText"	
 	^ self new sender: aSender ; text: aText ; yourself
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TCMessage class >> fromString: aString [
 	" creer une instance de TCMsg avec un str dotté d'un separator"	
 	^ self new fromString: aString ; yourself
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TCMessage >> fromString: aString [ 
 	"compose a msg from aStrings"	
 			
@@ -38,14 +39,14 @@ TCMessage >> fromString: aString [
 	
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TCMessage >> initialize [
 	"set le separator"	
 	super initialize.
 	separator := '>'
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 TCMessage >> printOn: aStream [
 	"TCMsg object as a string"	
 	aStream
@@ -56,22 +57,22 @@ TCMessage >> printOn: aStream [
 		
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TCMessage >> sender [
 	^ sender
 ]
 
-{ #category : #setting }
+{ #category : 'setting' }
 TCMessage >> sender: anObject [
 	^ sender := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TCMessage >> text [
 	^ text
 ]
 
-{ #category : #setting }
+{ #category : 'setting' }
 TCMessage >> text: anObject [
 	^ text := anObject
 ]

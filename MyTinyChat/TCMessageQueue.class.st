@@ -2,20 +2,21 @@
 Queue des MSG
 "
 Class {
-	#name : #TCMessageQueue,
-	#superclass : #Object,
+	#name : 'TCMessageQueue',
+	#superclass : 'Object',
 	#instVars : [
 		'messages'
 	],
-	#category : #MyTinyChat
+	#category : 'MyTinyChat',
+	#package : 'MyTinyChat'
 }
 
-{ #category : #adding }
+{ #category : 'adding' }
 TCMessageQueue >> add: aMessage [
 	messages add: aMessage
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 TCMessageQueue >> formattedMessagesFrom: aMessageNumber [
 	" ? "
 	^ String streamContents: 
@@ -25,32 +26,32 @@ TCMessageQueue >> formattedMessagesFrom: aMessageNumber [
 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TCMessageQueue >> initialize [
 	super initialize.
 	messages := OrderedCollection new.
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 TCMessageQueue >> listFrom: aIndex [
 	^ (aIndex > 0 and: [ aIndex <= messages size])
 		ifTrue: [ messages copyFrom: aIndex to: messages size ]
 		ifFalse: [ #() ]
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 TCMessageQueue >> remove: anIndex [
 	^ messages removeAt: anIndex.
 
 	
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 TCMessageQueue >> reset [ 
 	messages removeAll
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 TCMessageQueue >> size [
 	^ messages size
 ]

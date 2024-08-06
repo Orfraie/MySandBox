@@ -1,14 +1,15 @@
 Class {
-	#name : #LBoard,
-	#superclass : #Object,
+	#name : 'LBoard',
+	#superclass : 'Object',
 	#instVars : [
 		'matrix',
 		'ants'
 	],
-	#category : #MyLangton
+	#category : 'MyLangton',
+	#package : 'MyLangton'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LBoard >> addAnt: anAnt [
 	"Add an ant to the board"
 	ants add: anAnt.
@@ -16,56 +17,56 @@ LBoard >> addAnt: anAnt [
 	anAnt board: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LBoard >> addSomeAnts: someAnts [
 	"Add a number of ants to the board"
 	someAnts do: [ :ant | self addAnt: ant ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LBoard >> ants [
 ^ ants
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LBoard >> at: aPoint [
 	"Return the matrix value at a given position"
 	^ matrix at: aPoint x at: aPoint y
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LBoard >> at: aPoint put: aValue [
 	"Set a particular value at a given position"
 	^ matrix at: aPoint x at: aPoint y put: aValue
 ]
 
-{ #category : #defaults }
+{ #category : 'defaults' }
 LBoard >> defaultSize [
 	"This method returns the default size of a board, ie. the matrix used underneath"
 	^ 10 @ 10
 ]
 
-{ #category : #initialize }
+{ #category : 'initialize' }
 LBoard >> initialize [
 	super initialize.
 	self initializeMatrix.
 	ants := OrderedCollection new
 ]
 
-{ #category : #initialize }
+{ #category : 'initialize' }
 LBoard >> initializeMatrix [
 	"Initialize the internal matrix with 0"
-	matrix := Matrix rows: self defaultSize x columns: self defaultSize y.
+	matrix := Array2D rows: self defaultSize x columns: self defaultSize y.
 	matrix atAllPut: 0
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LBoard >> numberOfAnts [
 	"Return the number of ants running on the board"
 	^ ants size
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LBoard >> size [
 	"Return a point that represent the size of the board"
 	^ matrix rowCount @ matrix columnCount

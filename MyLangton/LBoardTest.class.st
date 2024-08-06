@@ -1,19 +1,20 @@
 Class {
-	#name : #LBoardTest,
-	#superclass : #TestCase,
+	#name : 'LBoardTest',
+	#superclass : 'TestCase',
 	#instVars : [
 		'board'
 	],
-	#category : #MyLangton
+	#category : 'MyLangton',
+	#package : 'MyLangton'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 LBoardTest >> setUp [
 	super setUp.
 	board := LBoard new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LBoardTest >> testAnts [
 |ants ant|
 ants := OrderedCollection new.
@@ -24,7 +25,7 @@ board addSomeAnts: ants.
 self assert: board numberOfAnts equals: 1.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LBoardTest >> testBoardValue [
 	self assert: (board at: 1 @ 1) equals: 0.
 	board at: 1 @ 1 put: 1. 
@@ -33,7 +34,7 @@ LBoardTest >> testBoardValue [
 	self assert: (board at: 1 @ 1) equals: 0.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LBoardTest >> testCreation [
 
 	self assert: board size equals: board defaultSize.

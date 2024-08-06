@@ -1,6 +1,6 @@
 Class {
-	#name : #LEvilAntTest,
-	#superclass : #TestCase,
+	#name : 'LEvilAntTest',
+	#superclass : 'TestCase',
 	#instVars : [
 		'ant',
 		'board'
@@ -8,24 +8,25 @@ Class {
 	#classInstVars : [
 		'ant'
 	],
-	#category : #MyLangton
+	#category : 'MyLangton',
+	#package : 'MyLangton'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 LEvilAntTest >> setUp [
 
 ant := LEvilAnt antPosition: 5@5.
 board := LBoard new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LEvilAntTest >> testCreation [
 
 self assert: ant position equals: ant defaultPosition.
 self assert: ant angleDirection equals: ant defaultAngleDirection.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LEvilAntTest >> testMove [
 
 |oldPoint newPoint oldAngle newAngle|
