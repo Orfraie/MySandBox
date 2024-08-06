@@ -1,11 +1,12 @@
 Class {
-	#name : #MyAnimalsTest,
-	#superclass : #TestCase,
-	#category : #'MyAnimals-Tests'
+	#name : 'MyAnimalsTest',
+	#superclass : 'TestCase',
+	#category : 'MyAnimals-Tests',
+	#package : 'MyAnimals-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 MyAnimalsTest >> testNeFaitRien [
-	" rien n'est vraiment fait"
+	" rien n'est vraiment vraiment fait"
 	^ self
 ]
