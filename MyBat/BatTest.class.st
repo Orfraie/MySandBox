@@ -8,7 +8,7 @@ Class {
 
 { #category : 'tests' }
 BatTest >> testDePrintOn [
-	"  deuxieme copie et deuxieme version   "
+	"  deuxieme copie et deuxieme version  3 "
 	| aCanot aDummyVariable |
 	Bat initClassVariable.
 	aCanot := Canot new.
@@ -18,7 +18,7 @@ BatTest >> testDePrintOn [
 
 { #category : 'tests' }
 BatTest >> testVraimentSimple [ 
-	"  deuxieme copie    "
+	"  deuxieme copie  3  "
 	| abat b|
 	abat := Bat new.
 	self assert: (abat isMemberOf: Bat ) equals: false
