@@ -12,8 +12,9 @@ AnimalTest >> testEnjoyingMyAnimal [
 	| anAnimal |
 	anAnimal := Animal new.
 	anAnimal name: 'Pollux'.
-	[ anAnimal joie ] on: ZeroDivide
-	do: [ :ex | Transcript cr ; show: 'bof' ; cr ]
+	[ anAnimal joie ] 
+		on: ZeroDivide
+		do: [ :ex | Transcript cr ; show: 'bof' ; cr ]
 	
 ]
 
