@@ -12,3 +12,8 @@ Class {
 Oiseau >> joie [
 	^ joie
 ]
+
+{ #category : 'accessing' }
+Oiseau >> joie: aString [
+	^ joie := aString
+]

@@ -11,16 +11,6 @@ Class {
 	#package : 'MyAnimal'
 }
 
-{ #category : 'instance creation' }
-Animal class >> newAnimal: aNom [
-	" On cree un animal en lui donnant un nom "
-	| a |
-	a := Animal new.
-	a nom: ''.
-	^a
-	
-]
-
 { #category : 'initialize' }
 Animal >> answer: aString [
 	"imprime la classe et le nom de l'Animal en question suivi de l'argument aString"
@@ -49,12 +39,6 @@ Animal >> joie [
 	"On delegue a la sous classe le job de montrer sa joie "
 	self subclassResponsibility 
 
-]
-
-{ #category : 'actions' }
-Animal >> nage [ 	
-	" un animal ne nage pas forcement "
-	self answer: 'Je ne sais pas nager.'
 ]
 
 { #category : 'accessing' }

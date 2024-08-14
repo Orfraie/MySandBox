@@ -12,9 +12,8 @@ AnimalTest >> testEnjoyingMyAnimal [
 	| anAnimal |
 	anAnimal := Animal new.
 	anAnimal name: 'Pollux'.
-	[ anAnimal joie ] 
-		on: ZeroDivide
-		do: [ :ex | Transcript cr ; show: 'bof' ; cr ]
+	self should: [ anAnimal joie ] raise: SubclassResponsibility
+
 	
 ]
 
@@ -30,6 +29,19 @@ AnimalTest >> testEnjoyingMyCat [
 ]
 
 { #category : 'tests' }
+AnimalTest >> testEnjoyingMyOiseau [
+	" ? "	
+			
+	| anOiseau |
+	anOiseau := Oiseau new.
+	anOiseau name: 'Pollux'.
+	anOiseau joie: 'JePepie'.
+	self assert: anOiseau  joie equals: 'JePepie'
+
+	
+]
+
+{ #category : 'tests' }
 AnimalTest >> testNamingMyAnimal [
 	" ? "	
 			
@@ -37,4 +49,16 @@ AnimalTest >> testNamingMyAnimal [
 	anAnimal := Animal new.
 	anAnimal name: 'Pollux'.
 	self assert: anAnimal name equals: 'Pollux'
+]
+
+{ #category : 'tests' }
+AnimalTest >> testSubClassResponsibility [
+	" Animal is an abstract class due to subclassresponsability occurence "	
+			
+	| anAnimal |
+	anAnimal := Animal new.
+	anAnimal name: 'Pollux'.
+	self should: [ anAnimal joie ] raise: SubclassResponsibility
+
+	
 ]
