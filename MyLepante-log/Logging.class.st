@@ -1,6 +1,6 @@
 Class {
-	#name : #Logging,
-	#superclass : #Object,
+	#name : 'Logging',
+	#superclass : 'Object',
 	#instVars : [
 		'udpPort',
 		'udpNode',
@@ -31,10 +31,11 @@ Class {
 		'DefaultUdpPort',
 		'Lf'
 	],
-	#category : #'MyLepante-log'
+	#category : 'MyLepante-log',
+	#package : 'MyLepante-log'
 }
 
-{ #category : #viewer }
+{ #category : 'viewer' }
 Logging class >> dumpLoggingClassVariables [
 	"retourne un string ready to print"
 	^ 'DefaultUdpFacility =' , DefaultUdpFacility printString , Lf , 
@@ -50,7 +51,7 @@ Logging class >> dumpLoggingClassVariables [
 	'End of Logging Class Variable.' , Lf
 ]
 
-{ #category : #viewer }
+{ #category : 'viewer' }
 Logging class >> dumpLoggingClassVariablesForLog [
 	"retourne un string ready to print"
 	| s |
@@ -60,7 +61,7 @@ Logging class >> dumpLoggingClassVariablesForLog [
 	^s
 ]
 
-{ #category : #'class variables' }
+{ #category : 'class variables' }
 Logging class >> initClassVariables [
 	"retourne une nouvelle instance du logging avec les valeurs par
 	default"
@@ -88,7 +89,7 @@ Logging class >> initClassVariables [
 	DefaultStripCtlFlag := true
 ]
 
-{ #category : #documentation }
+{ #category : 'documentation' }
 Logging class >> notesSurLaClasse [
 	"
 Cette classe permet d'installer directement , un m‚àö¬©canisme de logging apte a surveiller le fonctionnement d'une petite application.
@@ -126,7 +127,7 @@ Logging
 	^ self
 ]
 
-{ #category : #'Example-With-aGUI' }
+{ #category : 'Example-With-aGUI' }
 Logging class >> openExample [
 	"
 	Une petite application qui ne fait rien d'utile mais qui logge
@@ -140,7 +141,7 @@ Logging class >> openExample [
 	^ self
 ]
 
-{ #category : #OverallTests }
+{ #category : 'OverallTests' }
 Logging class >> openLogWithoutGUIExemple [
 	| aLog |
 	Logging initClassVariables.
@@ -155,7 +156,7 @@ Logging class >> openLogWithoutGUIExemple [
 	aLog closeAllSupport.
 ]
 
-{ #category : #OverallTests }
+{ #category : 'OverallTests' }
 Logging class >> openSyslogExample [
 	"
 	=======================================
@@ -180,7 +181,7 @@ Logging class >> openSyslogExample [
 	Transcript cr; show: 'server endpoint destroyed'; cr
 ]
 
-{ #category : #OverallTests }
+{ #category : 'OverallTests' }
 Logging class >> test1 [
 	| aLog |
 	Transcript cr ; show: 'TEST1 :: all functions On' ; cr.
@@ -197,7 +198,7 @@ Logging class >> test1 [
 	Transcript show: '-End' ; cr.
 ]
 
-{ #category : #OverallTests }
+{ #category : 'OverallTests' }
 Logging class >> test2 [
 	"
 	=======================================
@@ -222,7 +223,7 @@ Logging class >> test2 [
 	Transcript show: 'UDP endpoint destroyed'; cr ; show: '-End';cr.
 ]
 
-{ #category : #OverallTests }
+{ #category : 'OverallTests' }
 Logging class >> test2rsyslog [
 	"
 	=======================================
@@ -247,7 +248,7 @@ Logging class >> test2rsyslog [
 	Transcript show: 'UDP endpoint destroyed'; cr ; show: '-End';cr.
 ]
 
-{ #category : #openFileSocket }
+{ #category : 'openFileSocket' }
 Logging >> closeAllSupport [
 	"cloase all,.."
 	logFileDesc close.
@@ -256,20 +257,20 @@ Logging >> closeAllSupport [
 	Transcript cr; show: 'server endpoint destroyed'; cr.
 ]
 
-{ #category : #configuring }
+{ #category : 'configuring' }
 Logging >> debugFlag: d [ 
 	"Setting the debug level , d must be a boolean"
 	| temporary variable names |
 	debugFlag := d
 ]
 
-{ #category : #viewer }
+{ #category : 'viewer' }
 Logging >> dump [
 	"print current parameter of this instance"
        self inspect.
 ]
 
-{ #category : #viewer }
+{ #category : 'viewer' }
 Logging >> dumpFlag [
 	"print current flag of this instance"
 	| temporary s variable names |
@@ -278,7 +279,7 @@ Logging >> dumpFlag [
 	^ s
 ]
 
-{ #category : #viewer }
+{ #category : 'viewer' }
 Logging >> dumpInstanceVariable [
 	"print current parameter of this instance"
 	| temporary variable names |
@@ -298,12 +299,12 @@ Logging >> dumpInstanceVariable [
 		 cr
 ]
 
-{ #category : #readingInstVar }
+{ #category : 'readingInstVar' }
 Logging >> facility [
 	^udpFacility
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 Logging >> init [
 	"initialize une instance du logging avec les valeurs par default
 	Prise en compte d'un eventuel textMorph si disponible"
@@ -330,7 +331,7 @@ Logging >> init [
 	self openAllSupport
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 Logging >> init: aExistingTextMorphName [ 
 	"initialize une instance du logging avec les valeurs par default
 	Prise en compte d'un eventuel textMorph si disponible"
@@ -354,32 +355,34 @@ Logging >> init: aExistingTextMorphName [
 	self openAllSupport
 ]
 
-{ #category : #readingInstVar }
+{ #category : 'readingInstVar' }
 Logging >> initDone [
 	^initDone
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 Logging >> initDone: b [ 
 	initDone := b
 ]
 
-{ #category : #configuring }
+{ #category : 'configuring' }
 Logging >> logFlag: b [ 
 	logFlag := b
 ]
 
-{ #category : #configuring }
+{ #category : 'configuring' }
 Logging >> logMorph [
 	^aLogMorph
 ]
 
-{ #category : #configuring }
+{ #category : 'configuring' }
 Logging >> logPane [
-	^aLogPane
+	" A reimplanter "
+	| aLogPane |
+	^ aLogPane
 ]
 
-{ #category : #configuring }
+{ #category : 'configuring' }
 Logging >> logRoot: f [
 	"Setting local log root file name to use to log "
 
@@ -388,7 +391,7 @@ Logging >> logRoot: f [
 	^self
 ]
 
-{ #category : #'method execution' }
+{ #category : 'method execution' }
 Logging >> logit: code msg: aMsg [ 
 	"ca formate aMsg pour le support de l'ascii 7 bits (ou non) avec la
 	compatibilit‚àö¬© CSV et la compatibilit‚àö¬© Syslogd Facility et le support du
@@ -424,7 +427,7 @@ Logging >> logit: code msg: aMsg [
 	self outputLoggingString: s or: ss
 ]
 
-{ #category : #openFileSocket }
+{ #category : 'openFileSocket' }
 Logging >> openAllSupport [
 	"il s'agit ici de configurer les sous systemes de sortie pour qu'ils
 	soient disponibles pour le logging"
@@ -445,7 +448,7 @@ Logging >> openAllSupport [
 	self initDone: true
 ]
 
-{ #category : #openFileSocket }
+{ #category : 'openFileSocket' }
 Logging >> openLog [
 	"on cree le fichier log
 	self halt."
@@ -455,14 +458,14 @@ Logging >> openLog [
 	logFileDesc nextPutAll: 'Log file initialized,  date is ' , Date today printString , ', time is ' , Time now printString , Lf
 ]
 
-{ #category : #openFileSocket }
+{ #category : 'openFileSocket' }
 Logging >> openMemory [
 	"on cree le ficihier circulaire memoire avec un nom unique a definir 
 	et on l'initialise"
 	^ self
 ]
 
-{ #category : #openFileSocket }
+{ #category : 'openFileSocket' }
 Logging >> openSyslog [
 	"on cree le socket et on l'initialise"
 	| |
@@ -471,7 +474,7 @@ Logging >> openSyslog [
 	udpSocket := Socket newUDP.
 ]
 
-{ #category : #'method execution' }
+{ #category : 'method execution' }
 Logging >> outputLoggingString: aString [ 
 	"dispatche vers tous les supports de logging configur‚àö¬©s"
 	| temporary variable names crlf1 |
@@ -489,7 +492,7 @@ Logging >> outputLoggingString: aString [
 				port: udpPort]
 ]
 
-{ #category : #'method execution' }
+{ #category : 'method execution' }
 Logging >> outputLoggingString: aString or: aScreenString [
 	"dispatche vers tous les supports de logging configur‚àö¬©s"
 	| temporary variable names crlf1 |
@@ -507,36 +510,36 @@ Logging >> outputLoggingString: aString or: aScreenString [
 				port: udpPort]
 ]
 
-{ #category : #readingInstVar }
+{ #category : 'readingInstVar' }
 Logging >> stripCtl [
 	^stripCtl
 ]
 
-{ #category : #configuring }
+{ #category : 'configuring' }
 Logging >> stripCtlFlag: b [ 
 	| stripCtlFlag |
 	stripCtl := b
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Logging >> text [
 	| text |
 	^text
 ]
 
-{ #category : #setting }
+{ #category : 'setting' }
 Logging >> text: aString [
 	| text |
 	text := aString.
 	^self changed: #text.
 ]
 
-{ #category : #configuring }
+{ #category : 'configuring' }
 Logging >> textMorphName [
 	^textMorphName
 ]
 
-{ #category : #configuring }
+{ #category : 'configuring' }
 Logging >> textMorphName: n [  
 	"Setting the text Morph Name used to log  "
 
@@ -545,14 +548,14 @@ Logging >> textMorphName: n [
 	^self
 ]
 
-{ #category : #configuring }
+{ #category : 'configuring' }
 Logging >> textPaneName [  
 	"Getting the text Pane Name used to log  "
 
 	^textPaneName
 ]
 
-{ #category : #configuring }
+{ #category : 'configuring' }
 Logging >> textPaneName: n [  
 	"Setting the text Morph Name used to log  "
 
@@ -561,12 +564,12 @@ Logging >> textPaneName: n [
 	^self
 ]
 
-{ #category : #configuring }
+{ #category : 'configuring' }
 Logging >> transcriptFlag: b [ 
 	transcriptFlag := b
 ]
 
-{ #category : #configuring }
+{ #category : 'configuring' }
 Logging >> udpFacility: f [
 	"Setting facility to use to log to a Syslogd daemon"
 
@@ -575,24 +578,24 @@ Logging >> udpFacility: f [
 	^self
 ]
 
-{ #category : #readingInstVar }
+{ #category : 'readingInstVar' }
 Logging >> udpFlag [
 	^udpFlag
 ]
 
-{ #category : #configuring }
+{ #category : 'configuring' }
 Logging >> udpFlag: b [
 	udpFlag := b
 ]
 
-{ #category : #configuring }
+{ #category : 'configuring' }
 Logging >> udpNode: n [ 
 	"Setting the node name to use to log to a syslogd daemon"
 	| temporary variable names |
 	udpNode := n
 ]
 
-{ #category : #configuring }
+{ #category : 'configuring' }
 Logging >> udpPort: i [ 
 	"Setting the UDP port to use to log to a syslogd daemon "
 

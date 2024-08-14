@@ -1,1 +1,1 @@
-Package { #name : #'MyLepante-log' }
+Package { #name : 'MyLepante-log' }

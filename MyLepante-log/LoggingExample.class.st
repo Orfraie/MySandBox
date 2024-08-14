@@ -1,6 +1,6 @@
 Class {
-	#name : #LoggingExample,
-	#superclass : #Object,
+	#name : 'LoggingExample',
+	#superclass : 'Object',
 	#instVars : [
 		'list',
 		'debug',
@@ -14,10 +14,11 @@ Class {
 		'aTextMorph',
 		'aLog'
 	],
-	#category : #'MyLepante-log'
+	#category : 'MyLepante-log',
+	#package : 'MyLepante-log'
 }
 
-{ #category : #adding }
+{ #category : 'adding' }
 LoggingExample >> add [
 
 	" Rajoute an Object dans le dictionnaire ,..."
@@ -32,7 +33,7 @@ LoggingExample >> add [
 	self changed: #list
 ]
 
-{ #category : #'selecting text' }
+{ #category : 'selecting text' }
 LoggingExample >> copieNameSelected [
 
 	"retourne un text recopiant namedSelected"
@@ -46,7 +47,7 @@ LoggingExample >> copieNameSelected [
 	^v
 ]
 
-{ #category : #'selecting text' }
+{ #category : 'selecting text' }
 LoggingExample >> getValue [
 
 	"retourne un text recopiant la value associée à la clé 'namedSelected'"
@@ -62,7 +63,7 @@ LoggingExample >> getValue [
 	^ v
 ]
 
-{ #category : #notification }
+{ #category : 'notification' }
 LoggingExample >> idle [
 
 	"   "
@@ -70,7 +71,7 @@ LoggingExample >> idle [
 	aLog logit: 'aLog' msg: 'idle , called et ne fait rien.'
 ]
 
-{ #category : #initalize }
+{ #category : 'initalize' }
 LoggingExample >> initializeLDict [
 
 	""
@@ -80,7 +81,7 @@ LoggingExample >> initializeLDict [
 	nameSelected := nil
 ]
 
-{ #category : #list }
+{ #category : 'list' }
 LoggingExample >> list [
 
 	debug ifTrue: [ 
@@ -88,7 +89,7 @@ LoggingExample >> list [
 	^ dict keys asSortedCollection
 ]
 
-{ #category : #list }
+{ #category : 'list' }
 LoggingExample >> listIndex [
 
 	" "
@@ -101,7 +102,7 @@ LoggingExample >> listIndex [
 	^ indexSelected
 ]
 
-{ #category : #update }
+{ #category : 'update' }
 LoggingExample >> listIndex: anInteger [
 
 	""
@@ -120,7 +121,7 @@ LoggingExample >> listIndex: anInteger [
 	self changed: #copieNameSelected
 ]
 
-{ #category : #list }
+{ #category : 'list' }
 LoggingExample >> listMenu: aMenu [
 	| differentMenu |
 	debug ifTrue: [ 
@@ -136,13 +137,13 @@ LoggingExample >> listMenu: aMenu [
 	^ differentMenu
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LoggingExample >> logQQueChose [
 	"Active par un menu directement, ca log qque chose"
 	aLog logit: 'aLog' msg: 'LogQQueChose a propos de [' , nameSelected printString,']'
 ]
 
-{ #category : #initalize }
+{ #category : 'initalize' }
 LoggingExample >> openViewWithRubric [
 
 	"
@@ -210,7 +211,7 @@ LoggingExample >> openViewWithRubric [
 	^ window openInWorld
 ]
 
-{ #category : #initalize }
+{ #category : 'initalize' }
 LoggingExample >> openViewWithSpec2 [
 
 	"
