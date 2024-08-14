@@ -1,5 +1,6 @@
 "
-Mon commentaire here
+Running with
+ Counter startingAt: 10.
 "
 Class {
 	#name : 'ManifestMyCounter',

@@ -1,1 +1,0 @@
-Package { #name : 'MyLepante-log' }

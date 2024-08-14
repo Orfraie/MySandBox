@@ -22,16 +22,14 @@ Animal >> answer: aString [
 	
 ]
 
-{ #category : 'actions' }
-Animal >> habitat [ 
-	^habitat 
-]
+{ #category : 'basic tests' }
+Animal >> doesNotUnderstand_ATester: arg1 [
 
-{ #category : 'actions' }
-Animal >> habitat: unHabitat [ 
-	"Indique au receiver que son habitat est unHabitat et indique à l'Habitat qu'il a un nouveau resident"
-	habitat := unHabitat nom.
-	unHabitat ajoute: self
+	Transcript
+		show: 'Error : this instance of class [' , self class printString
+			, '] does not understand method [' , arg1 printString
+			, '], it must be implemented elsewhere.';
+		cr.
 ]
 
 { #category : 'accessing' }
@@ -51,18 +49,6 @@ Animal >> name [
 Animal >> name: aString [
 	^ name := aString
 
-]
-
-{ #category : 'privat' }
-Animal >> nom [
-	"retourne le nom  du receveur, donc la vaeur de la variable d'instance 'nom'"
-	^nom
-]
-
-{ #category : 'initialize' }
-Animal >> nom: aString [
-	"change le nom de l''Animal en aString"
-	nom := aString
 ]
 
 { #category : 'actions' }

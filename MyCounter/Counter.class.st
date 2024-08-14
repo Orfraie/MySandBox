@@ -1,3 +1,6 @@
+"
+Exo du MOOC
+"
 Class {
 	#name : 'Counter',
 	#superclass : 'Object',

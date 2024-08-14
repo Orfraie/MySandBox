@@ -1,3 +1,6 @@
+"
+Implantation des fourmis de Langton en Smalltalk-Squeak-Pharo
+"
 Class {
 	#name : 'LAnt',
 	#superclass : 'Object',
