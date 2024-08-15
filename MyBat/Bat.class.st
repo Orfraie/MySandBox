@@ -79,9 +79,11 @@ Bat class >> maxY [
 ]
 
 { #category : 'instance creation' }
-Bat class >> new [ 
-	self == Bat ifTrue: 
-		[ self logIt: 'Tentative de création d''un Bat sans type précis.' . ^ nil].
+Bat class >> new [
+
+	self == Bat ifTrue: [
+		self logIt: 'Tentative de création d''un Bat interdite, utiliser une subclass.'.
+		^ nil ].
 	^ super new
 ]
 
