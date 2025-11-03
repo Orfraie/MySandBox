@@ -1,1 +1,1 @@
-Package { #name : #'MyPlanDEau-Tests' }
+Package { #name : 'MyPlanDEau-Tests' }

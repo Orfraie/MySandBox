@@ -1,10 +1,11 @@
 Class {
-	#name : #VoilierTest,
-	#superclass : #TestCase,
-	#category : #'MyPlanDEau-Tests'
+	#name : 'VoilierTest',
+	#superclass : 'TestCase',
+	#category : 'MyPlanDEau-Tests',
+	#package : 'MyPlanDEau-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 VoilierTest >> testComplet [
 " test complet du voilier"
 | vo r1 r2 r3 r4 r5 r6 r7 r0 r8 r9|
@@ -42,7 +43,7 @@ self assert: ( r0 and: [ r1 and: [ 1 = r2 and: [ 1 = r3]]]) equals: true
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 VoilierTest >> testVoilePosition [
 	" tester la position courante de la voile"
 	| v vh vb |

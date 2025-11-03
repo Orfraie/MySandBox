@@ -1,10 +1,11 @@
 Class {
-	#name : #BateauTest,
-	#superclass : #TestCase,
-	#category : #'MyPlanDEau-Tests'
+	#name : 'BateauTest',
+	#superclass : 'TestCase',
+	#category : 'MyPlanDEau-Tests',
+	#package : 'MyPlanDEau-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 BateauTest >> testBuildThreeBateaux [
  	"Creation de 3 bateaux 1/ évaluation de la taille de dicoBoat 2/Extraction des variables d'instance"
 	| ba1 ba2 ba3 |
@@ -20,7 +21,7 @@ BateauTest >> testBuildThreeBateaux [
 	self assert: ( ba2 isKindOf: Bateau ) equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BateauTest >> testInitialize [ 
 	" "
 	| b c d |
@@ -36,15 +37,16 @@ BateauTest >> testInitialize [
 	equals: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BateauTest >> testLePlusSimple [
-	" "
+	" simple   test "
+
 	| ba |
 	ba := Bateau new.
-	self assert: ( ba isMemberOf:  Bateau ) equals: false
+	self assert: (ba isMemberOf: Bateau) equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BateauTest >> testinitClassVariable [
 	"Test initialisation des variables de la classe Bateau"
 	| |
@@ -54,7 +56,7 @@ BateauTest >> testinitClassVariable [
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BateauTest >> testmaxNberOfBoat [
 	""
 	|  |

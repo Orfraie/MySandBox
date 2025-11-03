@@ -1,10 +1,11 @@
 Class {
-	#name : #BoatTest,
-	#superclass : #TestCase,
-	#category : #'MyPlanDEau-Tests'
+	#name : 'BoatTest',
+	#superclass : 'TestCase',
+	#category : 'MyPlanDEau-Tests',
+	#package : 'MyPlanDEau-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 BoatTest >> testComplet [ 
 	" presque executable dans un  PlayGround "
 	|  v |
@@ -12,7 +13,7 @@ BoatTest >> testComplet [
 	self assert: ( v age  = 23 ) equals: true.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BoatTest >> testDeLaCouleur [
 	" presque executable dans un  PlayGround "
 	|  v   l |
@@ -22,7 +23,7 @@ BoatTest >> testDeLaCouleur [
 	self assert: (l = 'noir' ) equals: true.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BoatTest >> testDeLaLongueur [
 	" presque executable dans un  PlayGround "
 	|  v   l |
